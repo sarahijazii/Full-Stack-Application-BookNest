@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNest - Home</title>
+
+
+    <!-- Semantic UI CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/home.css">
+
+
+    <!-- jQuery & Semantic UI JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+</head>
+
+
+<body>
+<div class="ui menu">
+
+    <div class="ui container">
+        <div class="mobile-menu-icon">
+            <i class="bars icon" id="mobile-menu-toggle"></i>
+        </div>
+
+
+        <div class ="nav-logo-container">
+            <img src="/images/logo-beige.png" alt="BookNest Logo" class="nav-logo">
+        </div>
+
+
+        <div class="menu-items">
+            <a href="home" class="item">Home</a>
+            <a href="discover" class="item">Discover</a>
+            <a href="nobel" class="item">Nobel Prize</a>
+            <a href="profile" class="item">Profile</a>
+        </div>
+
+        <div class="right menu">
+            <div class="item">
+                <div class="ui fluid input"><input type="text" placeholder="Search books/authors..."></div>
+            </div>
+            <div class="item">
+                <button class="ui small button" id="login-btn">Login</button>
+                <button class="ui small primary button" id="signup-btn">Signup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="banner-image">
+    <img src="/images/home-image.jpg" alt="BookNest Banner">
+</div>
+
+
+<!-- video -->
+<div class="video-section">
+    <div class="video-wrapper narrow">
+        <iframe
+                src="https://player.vimeo.com/video/1068474918?autoplay=1&muted=1&loop=1&background=1"
+                frameborder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+                title="BookNest-BannerVideo">
+        </iframe>
+    </div>
+</div>
+
+
+<div class="ui container">
+    <div class="ui stackable grid">
+        <div class="row" style="align-items: stretch;">
+            <div class="twelve wide column">
+
+                <div class="book-section">
+                    <h2>All Books</h2>
+                    <div class="book-list">
+                        {{#allBooks}}
+                            <div class="book-card">
+                                <img src="{{coverUrl}}" alt="Book Cover">
+                                <p>{{title}} by {{author}}</p>
+                                <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
+                            </div>
+                        {{/allBooks}}
+                    </div>
+                </div>
+
+                <div class="book-section">
+                    <h2>Thrillers You Must Read</h2>
+                    <div class="book-list">
+                        {{#thrillers}}
+                            <div class="book-card">
+                                <img src="{{coverUrl}}" alt="Book Cover">
+                                <p>{{title}} by {{author}}</p>
+                                <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
+                            </div>
+                        {{/thrillers}}
+                    </div>
+                </div>
+
+                <div class="book-section">
+                    <h2>New Releases This Year</h2>
+                    <div class="book-list">
+                        {{#newReleases}}
+                            <div class="book-card">
+                                <img src="{{coverUrl}}" alt="Book Cover">
+                                <p>{{title}} by {{author}}</p>
+                                <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
+                            </div>
+                        {{/newReleases}}
+                    </div>
+                </div>
+
+                <div class="book-section">
+                    <h2>Best Books of the 20th Century</h2>
+                    <div class="book-list">
+                        {{#twentiethCentury}}
+                            <div class="book-card">
+                                <img src="{{coverUrl}}" alt="Book Cover">
+                                <p>{{title}} by {{author}}</p>
+                                <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
+                            </div>
+                        {{/twentiethCentury}}
+                    </div>
+                </div>
+
+                <div class="book-section">
+                    <h2>Best Memoir/Biography</h2>
+                    <div class="book-list">
+                        {{#memoirs}}
+                            <div class="book-card">
+                                <img src="{{coverUrl}}" alt="Book Cover">
+                                <p>{{title}} by {{author}}</p>
+                                <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
+                            </div>
+                        {{/memoirs}}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="four wide column sidebar">
+                <h3 class="ui header">Fun Facts About Books & Authors</h3>
+                <p>{{funFact.fact}}</p>
+
+                <h3 class="ui header">Upcoming Releases</h3>
+                <ul>
+                    {{#upcoming}}
+                        <li>{{title}} – {{releaseDate}}</li>
+                    {{/upcoming}}
+                </ul>
+
+
+                <h3 class="ui header">Quote of the Day</h3>
+                <blockquote>"{{quote.text}}" - {{quote.author}}</blockquote>
+
+                <h3 class="ui header">Reading Tips</h3>
+                <ul style="padding-left: 18px;">
+                    <li>Read 10 pages a day — that’s 12 books a year!</li>
+                    <li>Use sticky notes to mark favorite quotes </li>
+                    <li>Try audiobooks during walks or chores </li>
+                    <li>Join a virtual book club to stay motivated</li>
+                </ul>
+
+                <h3 class="ui header">Why Reading Matters  🤎</h3>
+                <p>Books improve focus, boost creativity, reduce stress, and build empathy. Even a few pages a day makes a difference 📖🌱</p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--login -->
+<div class="ui modal" id="login-modal">
+    <div class="header">Login</div>
+    <div class="content">
+        <form class="ui form">
+            <div class="field">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password">
+            </div>
+            <button class="ui button primary" type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- signup -->
+<div class="ui modal" id="signup-modal">
+    <div class="header">Signup</div>
+    <div class="content">
+        <form class="ui form">
+            <div class="field">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your name">
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" placeholder="Create a password">
+            </div>
+            <button class="ui button primary" type="submit">Signup</button>
+        </form>
+    </div>
+</div>
+
+<!-- footer -->
+<footer class="ui inverted  footer sixteen wide column">
+    <div class="ui container" style="padding-top: 50px">
+        <div class="ui stackable divided equal height stackable grid">
+            <div class="four wide column">
+                <h4 class="ui inverted header">Connect With Us</h4>
+                <div class="ui  inverted link list">
+                    <a href="#" class="item"><i class="facebook icon"></i> Facebook</a>
+                    <a href="#" class="item"><i class="twitter icon"></i> Twitter</a>
+                    <a href="#" class="item"><i class="instagram icon"></i> Instagram</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header">Contact Us</h4>
+                <p>Email: booknest@gmail.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+
+
+            <div class="eight wide column">
+                <h4 class="ui inverted header">Newsletter</h4>
+                <p>Subscribe for updates on new book releases.</p>
+
+                <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
+                    <input type="email" name="email" placeholder="Your email..." required>
+                    <button class="ui button" type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Modal for Subscription Feedback -->
+            <div class="ui modal" id="subscription-modal">
+                <div class="header" id="modal-header">Subscription</div>
+                <div class="content">
+                    <p id="modal-message">Thanks for subscribing!</p>
+                </div>
+                <div class="actions">
+                    <div class="ui approve button">OK</div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="ui center aligned container" style="padding-top: 20px;">
+            <p>&#xa9; 2025 BookNest. All rights reserved.</p>
+        </div>
+    </div>
+
+
+
+
+</footer>
+
+
+<!-- javascript -->
+<script>
+    $(document).ready(function() {
+        $("#login-btn").click(function() {
+            $("#login-modal").modal("show");
+        });
+
+
+
+
+        $("#signup-btn").click(function() {
+            $("#signup-modal").modal("show");
+        });
+
+
+
+
+        $("#mobile-menu-toggle").click(function() {
+            $(".menu-items").toggleClass("active");
+        });
+
+        const subscribed = '{{#subscribed}}true{{/subscribed}}';
+        const subscribeFailed = '{{#subscribeFailed}}true{{/subscribeFailed}}';
+
+        if (subscribed === 'true') {
+            $('#modal-header').text("You're Subscribed!");
+            $('#modal-message').text("Thanks for subscribing to BookNest 🎉");
+            $('#subscription-modal').modal('show');
+        }
+
+        if (subscribeFailed === 'true') {
+            $('#modal-header').text("Already Subscribed");
+            $('#modal-message').text("You're already on our list 😊 No need to subscribe again.");
+            $('#subscription-modal').modal('show');
+        }
+
+
+
+
+    });
+
+
+</script>
+
+
+</body>
+
+
+</html>
+
