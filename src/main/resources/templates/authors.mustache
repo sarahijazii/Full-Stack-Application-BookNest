@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{author.name}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/authors.css">
+</head>
+<body>
+    <div class="ui container">
+        <a href="/nobel" class="back-button">Back to Nobel Page</a>
+
+        <div class="ui segment">
+            <div class="author-details">
+                <h2 style="color: #5a3e36">{{author.name}}</h2>
+                <p style="color: #5a3e36"><strong>Language:</strong> {{author.language}}</p>
+                <p style="color: #5a3e36"><strong>Date of Birth:</strong> {{author.dob}}</p>
+                <p style="color: #5a3e36"><strong>Residence:</strong> {{author.residence}}</p>
+                <p style="color: #5a3e36"><strong>Prize Motivation:</strong> {{author.prizeMotivation}}</p>
+
+                <h2 style="color: #5a3e36">Biography</h2>
+                <p style="color: #5a3e36; line-height: 2;">{{author.biography}} <a href="{{author.wikiLink}}" target="_blank">[reference]</a></p>
+            </div>
+
+            <div class="notable_works">
+                <h2 style="color: #5a3e36">Notable Works</h2>
+                <div class="book-images">
+                    {{#author.books}}
+                        <img src="/images/{{image}}" alt="{{title}}">
+                    {{/author.books}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="ui inverted vertical segment footer">
+        <div class="ui container">
+            <div class="ui stackable divided equal height stackable grid">
+                <div class="four wide column">
+                    <h4 class="ui inverted" style="color: white">Connect With Us</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item" style="color: white"><i class="facebook icon"></i> Facebook</a>
+                        <a href="#" class="item" style="color: white"><i class="twitter icon"></i> Twitter</a>
+                        <a href="#" class="item" style="color: white"><i class="instagram icon"></i> Instagram</a>
+                    </div>
+                </div>
+                <div class="four wide column">
+                    <h4 class="ui inverted" style="color: white">Contact Us</h4>
+                    <p style="color: white">Email: booknest@gmail.com</p>
+                    <p style="color: white">Phone: +123 456 7890</p>
+                </div>
+                <div class="eight wide column">
+                    <h4 class="ui inverted" style="color: white">Newsletter</h4>
+                    <p style="color: white">Subscribe for updates on new book releases.</p>
+                    <div class="ui action input">
+                        <input type="email" placeholder="Your email...">
+                        <button class="ui button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ui center aligned container">
+                <p style="color: white">© 2025 BookNest. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

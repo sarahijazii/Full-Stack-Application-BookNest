@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nobel Prize</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="stylesheet" href="/css/nobel.css"> <!--linking the nobel main page with the css page-->
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <div class="ui sidebar visible">
+        <img src="/images/logo.png" alt="Logo" class="ui centered image logo">
+        <a href="#home" class="item">Home</a>
+        <a href="#discover" class="item">Discover</a>
+        <a href="#nobel-prize" class="item">Nobel Prize</a>
+        <a href="#profile" class="item">Profile</a>
+
+        <!--LOGIN/SIGN-UP BUTTONS-->
+        <div class="btn-container">
+            <button class="ui button primary login-btn" style="font-family: 'Arial', sans-serif">Login</button>
+            <button class="ui button secondary signup-btn" style="font-family: 'Arial', sans-serif">Signup</button>
+        </div>
+    </div>
+
+    <!-- HEADER IMAGE -->
+    <div class="ui header"></div>
+
+    <!--ASIDE CONTAINER FOR FUN FACTS & NOTABLE SPEECHES-->
+    <div class="ui container content-wrapper">
+        <div class="ui grid aside-container">
+
+            <!-- FUN FACT SECTION -->
+            <div class="ui column aside-section">
+                <h1 style="font-family: 'Playfair Display', 'Garamond', serif;">Fun Facts</h1>
+                <div class="ui list">
+                    {{#funFacts}}
+                        <div class="ui segment highlight">
+                            <p><strong>{{title}}:</strong></p>
+                            <p>{{description}}</p>
+                        </div>
+                    {{/funFacts}}
+                </div>
+            </div>
+
+            <!-- NOTABLE SPEECHES SECTION -->
+            <div class="ui column aside-section">
+                <h1 style="font-family: 'Playfair Display', 'Garamond', serif;">Notable Speeches</h1>
+                <div class="ui list">
+                    {{#speeches}}
+                        <div class="ui segment highlight">
+                            <p><strong>{{name}} ({{year}}):</strong></p>
+                            <p><a href="{{url}}" target="_blank">Read Speech 📖</a></p>
+                        </div>
+                    {{/speeches}}
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN SECTION -->
+        <main class="ui segment main-section">
+            <h1 style="font-family: 'Playfair Display', 'Garamond', serif;">Nobel Prize in Literature</h1>
+            <p style="margin-top: 2%; margin-bottom: 2%; color: #3e2723;">The Nobel Prize in Literature has been awarded 117 times to 121 Nobel Prize laureates between 1901 and 2024.</p>
+
+            <!-- WINNERS SECTION -->
+            <div class="ui column winner-grid">
+                <!-- WINNERS ROWS -->
+                <div class="ui column winner-row">
+                    {{#winners}}
+                        <div class="ui card">
+                            <img src="{{imagePath}}" alt="{{name}}" class="ui image winner-img">
+                            <h3 class="header">{{name}}</h3>
+                            <p class="award-year">Year: {{awardYear}}</p>
+                            <button class="ui button see-more-btn" onclick="location.href='/authors/{{name}}'">See More</button>
+                        </div>
+                    {{/winners}}
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="ui inverted vertical segment footer">
+            <div class="ui container">
+                <div class="ui stackable divided equal height stackable grid">
+                    <div class="four wide column">
+                        <h4 class="ui inverted">Connect With Us</h4>
+                        <div class="ui inverted link list">
+                            <a href="#" class="item"><i class="facebook icon"></i> Facebook</a>
+                            <a href="#" class="item"><i class="twitter icon"></i> Twitter</a>
+                            <a href="#" class="item"><i class="instagram icon"></i> Instagram</a>
+                        </div>
+                    </div>
+                    <div class="four wide column">
+                        <h4 class="ui inverted">Contact Us</h4>
+                        <p>Email: booknest@gmail.com</p>
+                        <p>Phone: +123 456 7890</p>
+                    </div>
+                    <div class="eight wide column">
+                        <h4 class="ui inverted">Newsletter</h4>
+                        <p>Subscribe for updates on new book releases.</p>
+                        <div class="ui action input">
+                            <input type="email" placeholder="Your email...">
+                            <button class="ui button">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui center aligned container">
+                    <p>© 2025 BookNest. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

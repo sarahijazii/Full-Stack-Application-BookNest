@@ -1,10 +1,9 @@
 package com.example.nobel_prize.repository;
 
-
-import com.example.nobel_prize.models.FunFact;
+import com.example.nobel_prize.models.NotableSpeech;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FunFactRepository extends JpaRepository<FunFact, Long> {
+public interface NotableRepository extends JpaRepository<NotableSpeech, Long> {
 }

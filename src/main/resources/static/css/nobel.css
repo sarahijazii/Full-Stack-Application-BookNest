@@ -1,0 +1,417 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #f4f1ea;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /*if the width is more than the size of the screen, we will just hide it*/
+}
+
+/*------------------ NAVIGATION BAR CSS DESIGN ------------------*/
+.ui.sidebar.visible {
+    width: 20%;
+    margin: 0;
+    background-color: #c7b8ab;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.ui.sidebar.visible .ui.image.logo {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/*styling the links in the nav bar that will lead us to the other webpages (home/discover/etc..)*/
+.ui.sidebar.visible a.item {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+.ui.sidebar.visible a.item:hover {
+    background-color: #5a3e36;
+    padding-left: 15px;
+    transform: translateX(5px); /* moving the link 5px to the right when the user hovers over the nav links */
+}
+
+/*------------------ LOGIN/SIGNUP BUTTONS CSS DESIGN ------------------*/
+.btn-container {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-container button.ui.button.primary.login-btn,
+.btn-container button.ui.button.secondary.signup-btn {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; /* The cursor will change to a pointer when the user hovers over */
+    transition: all 0.3s ease;
+}
+
+.btn-container button.ui.button.primary.login-btn {
+    background-color: #d3d3d3;
+    color: #333;
+}
+
+.btn-container button.ui.button.secondary.signup-btn {
+    background-color: #5a3e36;
+    color: white;
+}
+
+.btn-container button.ui.button.primary.login-btn:hover{
+    background-color: darkgray;
+}
+.btn-container button.ui.button.secondary.signup-btn:hover {
+    background-color: #7f5737;
+}
+
+/*------------------ HEADER IMAGE AND CONTENT ------------------*/
+.ui.header {
+    margin-left: 20%;
+    margin-top: 0%;
+    width: 80%;
+    height: 100vh; /*making sure it takes full screen height*/
+    background: url('/images/header_image.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.ui.container.content-wrapper {
+    margin-left: 20% !important;
+    width: 80% !important; /*the image header will take 80% since the nav bar is taking 20% so basically both will take the full screen*/
+    padding: 30px !important;
+    background-color: #f4f1ea;
+}
+
+/*------------------ FUN FACTS & NOTABLE SPEECHES CSS DESIGN ------------------*/
+.ui.grid.aside-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px;
+    margin-bottom: 5px;
+}
+
+.ui.grid.aside-container .ui.column.aside-section {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    height: 330px;
+    overflow: scroll;
+    flex: 1; /*allowing the element to grow and take up available space in the flex container*/
+}
+
+.ui.grid.aside-container .ui.column.aside-section h1 {
+    color: #7f5737;
+    font-weight: bolder;
+    text-align: center;
+    letter-spacing: 0.8px;
+    margin-bottom: 18px;
+    background: #e6ddd5;
+    padding: 10px 0;
+    border-radius: 8px; /* rounded edges */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ui.grid.aside-container .ui.column.aside-section p{
+    line-height: 1.5;
+}
+
+.ui.column.aside-section .ui.segment.highlight {
+    padding: 15px;
+    margin: 15px auto;
+    border-radius: 10px;
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
+    font-size: 16px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #9c6644;
+}
+
+.ui.column.aside-section .ui.segment.highlight:hover {
+    transform: scale(1.03); /*here we will increase the size by 3% when the user hovers*/
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ui.segment.highlight p {
+    margin: 5px 0;
+}
+
+.ui.segment.highlight strong {
+    color: #5a3e36;
+    font-size: 18px;
+}
+
+/* styling the links for the speeches (inside the Notable Speeches section) */
+.ui.column.aside-section a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #5a3e36;
+    background: #ebe2d9;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+.ui.column.aside-section a:hover {
+    background: #9c6644;
+    color: white;
+    transform: translateX(5px); /* moving the link 5px to the right when the user hovers over it */
+}
+
+/*------------------ MAIN SECTION CSS DESIGN ------------------*/
+
+.ui.segment.main-section {
+    background: white;
+    padding: 20px;
+    min-height: 400px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.ui.segment.main-section h1{
+    color:#8B5E3C;
+    font-size: 34px;
+}
+
+.ui.segment.main-section p{
+    font-size: 16px;
+}
+
+/* styling the layout for the winners -- we want the winners section inside the main to have
+a flex layout, therefore we can style them column-wise beside each other */
+.ui.column.winner-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ui.column.winner-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /*here we are specifying that we want three columns PER row*/
+    gap: 20px;
+}
+
+.ui.card {
+    background-color: #f7f0e9;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 0 !important;
+}
+
+.ui.card:hover {
+    transform: scale(1.05);
+}
+
+.ui.image.winner-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.ui.card .header {
+    font-size: 20px;
+    margin-top: 15px;
+    color: #3e2723;
+}
+
+.award-year {
+    color: #9c6644;
+    margin-top: 8px;
+}
+
+.ui.button.see-more-btn {
+    background-color: #613613;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.ui.button.see-more-btn:hover {
+    background-color: #48260D;
+}
+
+/* adding a responsive design in-case the width was below 768px */
+@media (max-width: 768px) {
+    .aside-container {
+        flex-direction: column;
+    }
+}
+
+.footer {
+    background-color: #c7b8ab !important;
+    color: #5a3e36;
+    padding: 50px 0;
+    margin-top: 60px;
+    border-top: 4px solid #8a6353;
+    text-align: center;
+}
+
+.footer .ui.inverted {
+    color: #5a3e36;
+    font-size: 1.4rem;
+}
+
+.footer .ui.inverted.link.list .item {
+    color: #5a3e36;
+    transition: color 0.3s ease-in-out;
+    font-size: 1.2rem;
+}
+
+.footer .ui.inverted.link.list .item:hover {
+    color: #8a6353;
+}
+
+.footer .ui.action.input input {
+    background: #f4f1ea;
+    color: #5a3e36;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #8a6353;
+}
+
+.footer .ui.center.aligned.container p {
+    margin-top: 30px;
+    font-size: 1rem;
+    color: #5a3e36;
+}
+
+/*-------------- MOBILE VIEW RESPONSIVENESS -------------- */
+@media (max-width: 500px) {
+    .ui.header {
+        display: none;
+    }
+
+    .ui.sidebar.visible {
+        width: 100%;
+        height: auto; /*height will be adjusted automatically based on the content */
+        position: relative; /*removing the fixed positioning so we can scroll with the page */
+        padding: 15px;
+    }
+
+    .ui.container.content-wrapper {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 20px !important;
+    }
+
+    .ui.grid.aside-container {
+        flex-direction: column; /*stacking Fun Facts & Notable Speeches vertically*/
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .ui.grid.aside-container .ui.column.aside-section {
+        width: 100%;
+        height: auto;
+        overflow: visible; /*removing the scroll*/
+    }
+
+    .ui.column.winner-row {
+        display: flex;
+        flex-direction: column; /*stacking the winners vertically*/
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .ui.card {
+        width: 90%;
+        max-width: 400px; /*setting a max width to prevent it from getting too large on bigger mobile screens */
+    }
+}
+
+/*-------------- TABLET VIEW RESPONSIVENESS -------------- */
+@media (max-width: 900px) and (min-width: 501px) {
+
+    .ui.header {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .ui.sidebar.visible {
+        display: flex;
+        flex-direction: row;  /* arranging the sidebar items horizontally */
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: auto !important;
+        position: relative;
+        padding: 15px;
+    }
+
+    .ui.sidebar.visible .logo-container,
+    .ui.sidebar.visible .nav-links{
+        flex: 1; /* making the nav bar share the available space equally */
+        text-align: center;
+    }
+
+    .ui.sidebar.visible .ui.image.logo {
+        width: auto;
+        max-width: 120px;
+        margin-bottom: 0;
+    }
+
+    .ui.sidebar.visible a.item {
+        margin: 0 5px;
+        font-size: 16px;
+    }
+
+    .ui.container.content-wrapper {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 20px !important;
+    }
+
+    .ui.grid.aside-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px;
+    }
+    .ui.grid.aside-container .ui.column.aside-section {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+
+    .ui.column.winner-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /*here we are specifying that we want two columns PER row*/
+        gap: 20px;
+    }
+    .ui.card {
+        width: 100%;
+        margin: 0 !important;
+    }
+}

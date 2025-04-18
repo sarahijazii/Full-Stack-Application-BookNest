@@ -1,16 +1,10 @@
-package com.example.ISTE240_Project.modelsDAO;
+package com.example.nobel_prize.repository;
 
-import com.example.ISTE240_Project.Models.Book;
+import com.example.nobel_prize.models.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.util.List;
-
+@Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    List<Book> findByGenreIgnoreCase(String genre);
-
-    List<Book> findByReleaseDateAfter(LocalDate date);
-
-    List<Book> findByReleaseDateBetween(LocalDate start, LocalDate end);
 }

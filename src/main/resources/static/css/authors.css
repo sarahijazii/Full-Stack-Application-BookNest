@@ -1,0 +1,189 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #c7b8ab;
+    color: #333;
+    line-height: 1.6; /*adding some spacing between lines*/
+    padding-top: 20px;
+}
+.ui.container {
+    background: linear-gradient(135deg, #8b5e3c, #a0785a);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    padding: 50px 30px 30px;
+    max-width: 1200px;
+    position: relative; /*moving the element from its normal position*/
+}
+
+.ui.segment {
+    border-radius: 12px;
+    border: none;
+}
+h1, h2, h3 {font-family: 'Merriweather', serif;}
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/*------------------ BACK BUTTON ------------------*/
+.back-button {
+    position: absolute; /*positioning the button relative to the nearest positioned ancestor*/
+    top: 10px;
+    left: 20px;
+    background-color: #5a3e36;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+.back-button:hover {
+    background-color: #8B5E3C;
+    color: white;
+}
+
+/*------------------ AUTHORS DETAILS DESIGN ------------------*/
+.author-details {
+    display: block; /*creating a flex container to add the author's details in*/
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 3 !important;
+}
+.author-info {
+    flex: 1; /* making the info section grow to fill available space*/
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.author-info h2 {
+    margin-bottom: 15px;
+    color: #5a3e36;
+}
+.author-info p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #555;
+}
+.author-info strong {
+    color: #8B5E3C;
+}
+
+/*------------------ AUTHOR'S BIOGRAPHY DESIGN ------------------*/
+.biography {
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 20px;
+    line-height: 3;
+}
+.biography h2 {
+    font-size: 2em;
+    color: #5a3e36;
+    margin-bottom: 10px;
+}
+.biography p {
+    font-size: 1.1em;
+    color: #5a3e36;
+    line-height: 3;
+}
+.biography a {
+    color: #5a3e36;
+    text-decoration: none;
+    font-weight: bold;
+}
+.biography a:hover {
+    text-decoration: underline;
+}
+
+/*------------------ Grid Layout ------------------*/
+.ui.grid .row {
+    margin-top: 20px;
+}
+.ui.grid .column {
+    padding: 10px;
+}
+.ui.four.wide.column {
+    display: flex;
+    justify-content: center;
+}
+
+/*------------------ NOTABLE WORKS DESIGN ------------------*/
+.notable_works{
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/*------------------ DESIGNING THE BOOKS IMAGES ------------------*/
+.book-images {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px; /*allowing book images to wrap onto the next line if needed*/
+}
+.book-images img {
+    width: 150px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.book-images img:hover {
+    transform: translateY(-5px); /*when the user hovers over the image, it will move by 5px upwards*/
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/*------------------ FOOTER ------------------*/
+.footer {
+    background-color: #c7b8ab !important;
+    color: white;
+    padding: 50px 0;
+    margin-top: 20px;
+    border-top: 4px solid #8a6353;
+    text-align: center;
+}
+.footer .ui.inverted {
+    color: #5a3e36;
+    font-size: 1.4rem;
+}
+.footer .ui.inverted.link.list .item {
+    color: #5a3e36;
+    transition: color 0.3s ease-in-out;
+    font-size: 1.2rem;
+}
+.footer .ui.inverted.link.list .item:hover {
+    color: #8a6353;
+}
+.footer .ui.action.input input {
+    background: #f4f1ea;
+    color: #5a3e36;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #8a6353;
+}
+.footer .ui.center.aligned.container p {
+    font-size: 1rem;
+    color: #5a3e36;
+}
