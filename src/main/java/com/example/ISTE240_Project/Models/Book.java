@@ -4,64 +4,23 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "books")
 public class Book {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     private String title;
     private String author;
     private String genre;
-    private LocalDate releaseDate;
-    private String coverUrl;
+    private String description;
+    private String isbn;
 
-    // Constructors
-    public Book() {}
+    @Column(name = "page_count")
+    private int pageCount;
 
-    public Book(String title, String author, String genre, LocalDate releaseDate, String coverUrl) {
-        this.title = title;
-        this.author = author;
-        this.genre = genre;
-        this.releaseDate = releaseDate;
-        this.coverUrl = coverUrl;
-    }
+    @Column(name = "thumbnail_url")
+    private String thumbnailUrl;
 
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getAuthor() {
-        return author;
-    }
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-    public String getGenre() {
-        return genre;
-    }
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-    public String getCoverUrl() {
-        return coverUrl;
-    }
-    public void setCoverUrl(String coverUrl) {
-        this.coverUrl = coverUrl;
-    }
+    @Column(name = "publication_date")
+    private LocalDate publicationDate;
 }

@@ -48,7 +48,7 @@
             </div>
             <div class="item">
                 <button class="ui small button" id="login-btn">Login</button>
-                <button class="ui small primary button" id="signup-btn">Signup</button>
+                <button class="ui small button" id="signup-btn" style="background-color: #d1bfa7; color: #3a2e1f;">Signup</button>
             </div>
         </div>
     </div>
@@ -85,11 +85,11 @@
                     <h2>All Books</h2>
                     <div class="book-list">
                         {{#allBooks}}
-                            <div class="book-card">
-                                <img src="{{coverUrl}}" alt="Book Cover">
+                            <a href="/book/{{id}}" class="book-card">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
-                            </div>
+                            </a>
                         {{/allBooks}}
                     </div>
                 </div>
@@ -98,11 +98,11 @@
                     <h2>Thrillers You Must Read</h2>
                     <div class="book-list">
                         {{#thrillers}}
-                            <div class="book-card">
-                                <img src="{{coverUrl}}" alt="Book Cover">
+                            <a href="/book/{{id}}" class="book-card">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
-                            </div>
+                            </a>
                         {{/thrillers}}
                     </div>
                 </div>
@@ -111,11 +111,11 @@
                     <h2>New Releases This Year</h2>
                     <div class="book-list">
                         {{#newReleases}}
-                            <div class="book-card">
-                                <img src="{{coverUrl}}" alt="Book Cover">
+                            <a href="/book/{{id}}" class="book-card">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
-                            </div>
+                            </a>
                         {{/newReleases}}
                     </div>
                 </div>
@@ -124,11 +124,11 @@
                     <h2>Best Books of the 20th Century</h2>
                     <div class="book-list">
                         {{#twentiethCentury}}
-                            <div class="book-card">
-                                <img src="{{coverUrl}}" alt="Book Cover">
+                            <a href="/book/{{id}}" class="book-card">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
-                            </div>
+                            </a>
                         {{/twentiethCentury}}
                     </div>
                 </div>
@@ -137,11 +137,11 @@
                     <h2>Best Memoir/Biography</h2>
                     <div class="book-list">
                         {{#memoirs}}
-                            <div class="book-card">
-                                <img src="{{coverUrl}}" alt="Book Cover">
+                            <a href="/book/{{id}}" class="book-card">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
-                            </div>
+                            </a>
                         {{/memoirs}}
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                 <h3 class="ui header">Upcoming Releases</h3>
                 <ul>
                     {{#upcoming}}
-                        <li>{{title}} – {{releaseDate}}</li>
+                        <li>{{title}} – {{publicationDate}}</li>
                     {{/upcoming}}
                 </ul>
 
@@ -218,7 +218,7 @@
                 <label>Password</label>
                 <input type="password" placeholder="Create a password">
             </div>
-            <button class="ui button primary" type="submit">Signup</button>
+            <button class="ui small button" id="signup-submit" style="background-color: #d1bfa7 !important; color: #3a2e1f !important;">Signup</button>
         </form>
     </div>
 </div>

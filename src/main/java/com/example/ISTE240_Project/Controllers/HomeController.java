@@ -29,7 +29,7 @@ public class HomeController {
         model.addAttribute("newReleases", bookService.getNewReleases());
         model.addAttribute("twentiethCentury", bookService.getTwentiethCenturyBooks());
         model.addAttribute("thrillers", bookService.getByGenre("Thriller"));
-        model.addAttribute("memoirs", bookService.getByGenre("Non-Fiction"));
+        model.addAttribute("memoirs", bookService.getMemoirs());
         model.addAttribute("upcoming", bookService.getUpcomingReleases());
         model.addAttribute("allBooks", bookService.getAllBooks());
 
