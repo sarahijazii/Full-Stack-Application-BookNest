@@ -1,4 +1,4 @@
-package com.example.nobel_prize.models;
+package com.example.ISTE240_Project.Models;
 
 import jakarta.persistence.*;
 

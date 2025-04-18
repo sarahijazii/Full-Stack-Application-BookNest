@@ -1,6 +1,6 @@
-package com.example.nobel_prize.repository;
+package com.example.ISTE240_Project.modelsDAO;
 
-import com.example.nobel_prize.models.NotableSpeech;
+import com.example.ISTE240_Project.Models.NotableSpeech;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

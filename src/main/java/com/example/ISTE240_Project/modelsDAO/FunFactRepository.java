@@ -1,10 +1,7 @@
-package com.example.nobel_prize.repository;
+package com.example.ISTE240_Project.modelsDAO;
 
-
-import com.example.nobel_prize.models.FunFact;
+import com.example.ISTE240_Project.Models.FunFact;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface FunFactRepository extends JpaRepository<FunFact, Long> {
 }

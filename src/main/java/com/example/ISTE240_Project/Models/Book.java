@@ -1,37 +1,67 @@
-// This Java page will be used as a model page for the Book's info
-// when the user clicks 'see more' button in the Nobel Prize Page
-package com.example.nobel_prize.models;
+package com.example.ISTE240_Project.Models;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "books")
 public class Book {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title", nullable = false)
     private String title;
+    private String author;
+    private String genre;
+    private LocalDate releaseDate;
+    private String coverUrl;
 
-    @Column(name = "image")
-    private String image;
-
-    //DEFAULT CONSTRUCTOR
+    // Constructors
     public Book() {}
 
-    //CONSTRUCTOR
-    public Book(String title, String image) {
+    public Book(String title, String author, String genre, LocalDate releaseDate, String coverUrl) {
         this.title = title;
-        this.image = image;
+        this.author = author;
+        this.genre = genre;
+        this.releaseDate = releaseDate;
+        this.coverUrl = coverUrl;
     }
 
-    // GETTERS
-    public String getTitle() {return title;}
-    public String getImage() {return image;}
-
-    // SETTERS
-    public void setTitle(String title) {this.title = title;}
-    public void setImage(String image) {this.image = image;}
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public String getAuthor() {
+        return author;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    public String getGenre() {
+        return genre;
+    }
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+    public String getCoverUrl() {
+        return coverUrl;
+    }
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
+    }
 }

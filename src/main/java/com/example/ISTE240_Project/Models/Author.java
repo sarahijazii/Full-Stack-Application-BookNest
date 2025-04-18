@@ -1,6 +1,6 @@
 // This Java page will be used as a model page for the Author's info
 // when the user clicks 'see more' button in the Nobel Prize Page
-package com.example.nobel_prize.models;
+package com.example.ISTE240_Project.Models;
 
 import java.util.List;
 import jakarta.persistence.*;
@@ -31,13 +31,13 @@ public class Author {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id") // foreign key in Book table
-    private List<Book> books;
+    private List<NobelBook> books;
 
     //DEFAULT CONSTRUCTOR
     public Author() {}
 
     //CONSTRUCTORS
-    public Author(String name, String language, String dob, String residence, String prizeMotivation, String biography, String wikiLink, List<Book> books) {
+    public Author(String name, String language, String dob, String residence, String prizeMotivation, String biography, String wikiLink, List<NobelBook> books) {
         this.name = name;
         this.language = language;
         this.dob = dob;
@@ -56,7 +56,7 @@ public class Author {
     public String getPrizeMotivation() {return prizeMotivation;}
     public String getBiography() {return biography;}
     public String getWikiLink() {return wikiLink;}
-    public List<Book> getBooks() {return books;}
+    public List<NobelBook> getBooks() {return books;}
 
     // SETTERS
     public void setName(String name) {this.name = name;}
@@ -66,5 +66,5 @@ public class Author {
     public void setPrizeMotivation(String prizeMotivation) { this.prizeMotivation = prizeMotivation;}
     public void setBiography(String biography) {this.biography = biography;}
     public void setWikiLink(String wikiLink) {this.wikiLink = wikiLink;}
-    public void setBooks(List<Book> books) {this.books = books;}
+    public void setBooks(List<NobelBook> books) {this.books = books;}
 }

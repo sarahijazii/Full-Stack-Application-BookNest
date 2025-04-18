@@ -1,10 +1,10 @@
 package com.example.ISTE240_Project.modelsDAO;
 
-import com.example.ISTE240_Project.Models.NobelPrize;
+import com.example.ISTE240_Project.Models.NobelBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface NobelRepository extends JpaRepository<NobelPrize, Long> {
+public interface NobelBookRepository extends JpaRepository<NobelBook, Long> {
 
 }

@@ -1,7 +1,7 @@
-package com.example.nobel_prize.services;
+package com.example.ISTE240_Project.Services;
 
-import com.example.nobel_prize.models.Author;
-import com.example.nobel_prize.repository.AuthorRepository;
+import com.example.ISTE240_Project.Models.Author;
+import com.example.ISTE240_Project.modelsDAO.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

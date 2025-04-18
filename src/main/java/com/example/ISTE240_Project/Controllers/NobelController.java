@@ -1,11 +1,11 @@
-package com.example.nobel_prize.controllers;
+package com.example.ISTE240_Project.Controllers;
 
-import com.example.nobel_prize.models.Author;
-import com.example.nobel_prize.models.FunFact;
-import com.example.nobel_prize.models.NobelPrize;
-import com.example.nobel_prize.models.NotableSpeech;
-import com.example.nobel_prize.services.AuthorService;
-import com.example.nobel_prize.services.NobelService;
+import com.example.ISTE240_Project.Models.Author;
+import com.example.ISTE240_Project.Models.NobelFunFact;
+import com.example.ISTE240_Project.Models.NobelPrize;
+import com.example.ISTE240_Project.Models.NotableSpeech;
+import com.example.ISTE240_Project.Services.AuthorService;
+import com.example.ISTE240_Project.Services.NobelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,12 +42,12 @@ public class NobelController {
     public String getNobelPage(Model model) {
 
         // ADDING FUN FACTS DATA
-        List<FunFact> funFacts = Arrays.asList(
-                new FunFact("Youngest Literature Winner", "Rudyard Kipling (42 years old, 1907)"),
-                new FunFact("Most Nominated Author", "Graham Greene (20+ nominations, but never won)"),
-                new FunFact("Only Songwriter to Win", "Bob Dylan (2016) – The first musician awarded the prize, for his poetic lyrics"),
-                new FunFact("A Winner Who Refused the Prize", "Jean-Paul Sartre (1964) – The French philosopher and writer declined the award, saying a writer should not accept official honors"),
-                new FunFact("A Winner Who Didn’t Know She Won", "Doris Lessing (2007) – She found out about her win from journalists waiting outside her house and responded with, \"Oh Christ!\"")
+        List<NobelFunFact> funFacts = Arrays.asList(
+                new NobelFunFact("Youngest Literature Winner", "Rudyard Kipling (42 years old, 1907)"),
+                new NobelFunFact("Most Nominated Author", "Graham Greene (20+ nominations, but never won)"),
+                new NobelFunFact("Only Songwriter to Win", "Bob Dylan (2016) – The first musician awarded the prize, for his poetic lyrics"),
+                new NobelFunFact("A Winner Who Refused the Prize", "Jean-Paul Sartre (1964) – The French philosopher and writer declined the award, saying a writer should not accept official honors"),
+                new NobelFunFact("A Winner Who Didn’t Know She Won", "Doris Lessing (2007) – She found out about her win from journalists waiting outside her house and responded with, \"Oh Christ!\"")
         );
         model.addAttribute("funFacts", funFacts);
 
