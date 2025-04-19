@@ -1,33 +1,65 @@
 package com.example.ISTE240_Project.config;
 
-import com.example.ISTE240_Project.Models.Author;
-import com.example.ISTE240_Project.Models.NobelBook;
-import com.example.ISTE240_Project.Models.NobelPrize;
-import com.example.ISTE240_Project.modelsDAO.AuthorRepository;
-import com.example.ISTE240_Project.modelsDAO.NobelRepository;
+import com.example.ISTE240_Project.Models.*;
+import com.example.ISTE240_Project.modelsDAO.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
+    private final BookRepository bookRepository;
+    private final QuoteRepository quoteRepository;
+    private final FunFactRepository funFactRepository;
     private final AuthorRepository authorRepository;
+    private final NobelRepository nobelRepository;
 
     @Autowired
-    private NobelRepository nobelRepository;
-
-
-    public DataLoader(AuthorRepository authorRepository) {
+    public DataLoader(BookRepository bookRepository,
+                      QuoteRepository quoteRepository,
+                      FunFactRepository funFactRepository,
+                      AuthorRepository authorRepository,
+                      NobelRepository nobelRepository) {
+        this.bookRepository = bookRepository;
+        this.quoteRepository = quoteRepository;
+        this.funFactRepository = funFactRepository;
         this.authorRepository = authorRepository;
+        this.nobelRepository = nobelRepository;
     }
 
     @Override
     @Transactional
     public void run(String... args) {
+        // Quotes
+        if (quoteRepository.count() == 0) {
+            quoteRepository.saveAll(List.of(
+                    new Quote("A reader lives a thousand lives before he dies.", "George R.R. Martin"),
+                    new Quote("So many books, so little time.", "Frank Zappa"),
+                    new Quote("Until I feared I would lose it, I never loved to read. One does not love breathing.", "Harper Lee"),
+                    new Quote("Books are a uniquely portable magic.", "Stephen King"),
+                    new Quote("That's the thing about books. They let you travel without moving your feet.", "Jhumpa Lahiri"),
+                    new Quote("Reading is essential for those who seek to rise above the ordinary.", "Jim Rohn"),
+                    new Quote("A room without books is like a body without a soul.", "Marcus Tullius Cicero")
+            ));
+        }
+
+        // Fun Facts
+        if (funFactRepository.count() == 0) {
+            funFactRepository.saveAll(List.of(
+                    new FunFact("The first book ever written using a typewriter was 'The Adventures of Tom Sawyer'."),
+                    new FunFact("The most expensive book ever purchased was sold for $30.8 million."),
+                    new FunFact("Bibliosmia is the enjoyment of the smell of old books."),
+                    new FunFact("The longest sentence ever printed is 823 words long, in Victor Hugo's *Les Misérables*."),
+                    new FunFact("J.K. Rowling was rejected by 12 publishers before *Harry Potter* was accepted.")
+            ));
+        }
+
+        // Authors
         if (authorRepository.count() == 0) {
             Author author = new Author(
                     "Han Kang",
@@ -439,6 +471,7 @@ public class DataLoader implements CommandLineRunner {
             authorRepository.save(author24);
         }
 
+        // Nobel Prizes
         if (nobelRepository.count() == 0) {
             nobelRepository.saveAll(List.of(
                     new NobelPrize("Han Kang", 2024, "/images/han_kang.jpg"),
