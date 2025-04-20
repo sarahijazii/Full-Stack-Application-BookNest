@@ -1,3 +1,4 @@
+/*------------------BODY STYLING ------------------*/
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #c7b8ab;
@@ -18,7 +19,10 @@ body {
     border-radius: 12px;
     border: none;
 }
+/*------------------ STYLING BY FONT SIZE H1, H2, & H3 TOGETHER ------------------*/
 h1, h2, h3 {font-family: 'Merriweather', serif;}
+
+/*------------------ STYLING BY FONT SIZE H1, H2, & H3 INDIVIDUALLY------------------*/
 h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
