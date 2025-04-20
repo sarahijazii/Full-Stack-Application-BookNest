@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class AuthorService {
 
-        @Autowired
+        @Autowired //injecting the AuthorRepository to perform database operations on Author data
         private AuthorRepository authorRepository;
 
         @Autowired
@@ -18,10 +18,12 @@ public class AuthorService {
                 this.authorRepository = authorRepository;
         }
 
+        //retrieves a list of all authors from the database
         public List<Author> getAllAuthors() {
                 return authorRepository.findAll();
         }
 
+        //retrieves an author by their name, ignoring case sensitivity
         public Author getAuthorByName(String name) {
                 return authorRepository.findByNameIgnoreCase(name).orElse(null);
         }
