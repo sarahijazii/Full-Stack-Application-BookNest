@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class NobelService {
 
-    @Autowired
+    @Autowired  //injecting the NobelRepository to access Nobel Prize data from the database
     private NobelRepository nobelRepository;
 
     @Autowired
@@ -18,6 +18,7 @@ public class NobelService {
         this.nobelRepository = nobelRepository;
     }
 
+    //retrieving all Nobel Prize winners from the repository
     public List<NobelPrize> getAllWinners() {
         return nobelRepository.findAll();
     }
