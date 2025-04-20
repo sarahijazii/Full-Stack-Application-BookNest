@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "notable_speeches")
 public class NotableSpeech {
 
-    @Id
+    @Id // Primary key for the NOTABLE SPEECHES entity
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
