@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 @Table(name = "books")
 public class NobelBook {
     
-    @Id // Primary key for the NobelPrize entity
+    @Id // Primary key for the BOOKS entity
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
