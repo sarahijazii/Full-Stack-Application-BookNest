@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "fun_facts")
 public class NobelFunFact {
 
-    @Id
+    @Id // Primary key for the NobelPrize entity
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
