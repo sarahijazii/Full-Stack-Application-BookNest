@@ -10,9 +10,10 @@
 </head>
 <body>
     <div class="ui container">
-        <a href="/nobel" class="back-button">Back to Nobel Page</a>
+        <a href="/nobel" class="back-button">Back to Nobel Page</a> <!-- BACK BUTTON -->
 
         <div class="ui segment">
+            <!-- AUTHOR DETAILS -->
             <div class="author-details">
                 <h2 style="color: #5a3e36">{{author.name}}</h2>
                 <p style="color: #5a3e36"><strong>Language:</strong> {{author.language}}</p>
@@ -20,10 +21,11 @@
                 <p style="color: #5a3e36"><strong>Residence:</strong> {{author.residence}}</p>
                 <p style="color: #5a3e36"><strong>Prize Motivation:</strong> {{author.prizeMotivation}}</p>
 
+                <!-- BIOGRAPHY -->
                 <h2 style="color: #5a3e36">Biography</h2>
                 <p style="color: #5a3e36; line-height: 2;">{{author.biography}} <a href="{{author.wikiLink}}" target="_blank">[reference]</a></p>
             </div>
-
+            <!-- NOTABLE WORKS -->
             <div class="notable_works">
                 <h2 style="color: #5a3e36">Notable Works</h2>
                 <div class="book-images">
