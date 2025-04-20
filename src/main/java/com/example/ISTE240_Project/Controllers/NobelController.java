@@ -18,10 +18,10 @@ import java.util.List;
 @Controller
 public class NobelController {
 
-    // INJECTING THE 'nobelService' TO ACCESS WINNERS DATA
+    //INJECTING THE 'nobelService' TO ACCESS WINNERS DATA
     private final NobelService nobelService;
 
-    // CONSTRUCTOR-BASED DEPENDENCY INJECTION
+    //CONSTRUCTOR-BASED DEPENDENCY INJECTION
     @Autowired
     public NobelController(NobelService nobelService) {
         this.nobelService = nobelService;
@@ -37,7 +37,7 @@ public class NobelController {
         return "authors"; // This should map to author.mustache
     }
 
-    // MAPPING FOR THE NOBEL PRIZE PAGE
+    //MAPPING FOR THE NOBEL PRIZE PAGE
     @GetMapping("/nobel")
     public String getNobelPage(Model model) {
 
@@ -51,7 +51,7 @@ public class NobelController {
         );
         model.addAttribute("funFacts", funFacts);
 
-        // ADDING NOTABLE SPEECHES DATA
+        //ADDING NOTABLE SPEECHES DATA
         List<NotableSpeech> speeches = Arrays.asList(
                 new NotableSpeech("William Faulkner", 1950, "https://www.nobelprize.org/prizes/literature/1949/faulkner/speech/"),
                 new NotableSpeech("Toni Morrison", 1993, "https://www.nobelprize.org/prizes/literature/1993/morrison/speech/"),
@@ -60,7 +60,7 @@ public class NobelController {
         );
         model.addAttribute("speeches", speeches);
 
-        // ADDING WINNERS DATA FORM THE SERVICE TO THE MODEL
+        //ADDING WINNERS DATA FORM THE SERVICE TO THE MODEL
         List<NobelPrize> winners = nobelService.getAllWinners();
         model.addAttribute("winners", winners);
 
