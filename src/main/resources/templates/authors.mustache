@@ -36,13 +36,14 @@
             </div>
         </div>
     </div>
+
     <!-- FOOTER -->
     <footer class="ui inverted vertical segment footer">
         <div class="ui container">
             <div class="ui stackable divided equal height stackable grid">
                 <div class="four wide column">
                     <h4 class="ui inverted" style="color: white">Connect With Us</h4>
-                    <div class="ui inverted link list">
+                    <div class="ui  inverted link list">
                         <a href="#" class="item" style="color: white"><i class="facebook icon"></i> Facebook</a>
                         <a href="#" class="item" style="color: white"><i class="twitter icon"></i> Twitter</a>
                         <a href="#" class="item" style="color: white"><i class="instagram icon"></i> Instagram</a>
@@ -53,19 +54,67 @@
                     <p style="color: white">Email: booknest@gmail.com</p>
                     <p style="color: white">Phone: +123 456 7890</p>
                 </div>
+
+
                 <div class="eight wide column">
                     <h4 class="ui inverted" style="color: white">Newsletter</h4>
                     <p style="color: white">Subscribe for updates on new book releases.</p>
-                    <div class="ui action input">
-                        <input type="email" placeholder="Your email...">
-                        <button class="ui button">Subscribe</button>
+
+                    <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
+                        <input type="email" name="email" placeholder="Your email..." required>
+                        <button class="ui button" type="submit">Subscribe</button>
+                    </form>
+                </div>
+
+                <!-- Modal for Subscription Feedback -->
+                <div class="ui modal" id="subscription-modal">
+                    <div class="header" id="modal-header">Subscription</div>
+                    <div class="content">
+                        <p id="modal-message">Thanks for subscribing!</p>
+                    </div>
+                    <div class="actions">
+                        <div class="ui approve button">OK</div>
                     </div>
                 </div>
+
+
             </div>
             <div class="ui center aligned container">
-                <p style="color: white">© 2025 BookNest. All rights reserved.</p>
+                <p style="color: white">&#xa9; 2025 BookNest. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        $(document).ready(function() {
+            $("#login-btn").click(function() {
+                $("#login-modal").modal("show");
+            });
+
+            $("#signup-btn").click(function() {
+                $("#signup-modal").modal("show");
+            });
+
+            $("#mobile-menu-toggle").click(function() {
+                $(".menu-items").toggleClass("active");
+            });
+
+            const subscribed = '{{#subscribed}}true{{/subscribed}}';
+            const subscribeFailed = '{{#subscribeFailed}}true{{/subscribeFailed}}';
+
+            if (subscribed === 'true') {
+                $('#modal-header').text("You're Subscribed!");
+                $('#modal-message').text("Thanks for subscribing to BookNest 🎉");
+                $('#subscription-modal').modal('show');
+            }
+
+            if (subscribeFailed === 'true') {
+                $('#modal-header').text("Already Subscribed");
+                $('#modal-message').text("You're already on our list 😊 No need to subscribe again.");
+                $('#subscription-modal').modal('show');
+            }
+        });
+    </script>
 </body>
 </html>
