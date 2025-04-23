@@ -5,7 +5,7 @@ package com.example.ISTE240_Project.Models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "books")
+@Table(name = "nobel-books")
 public class NobelBook {
     
     @Id // Primary key for the BOOKS entity

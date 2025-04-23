@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{book.title}} - Book Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <style>
+        body {
+            background-color: #fdf6e3;
+            color: #333;
+            padding: 50px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .book-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff8ec;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .book-cover {
+            width: 200px;
+            border-radius: 8px;
+        }
+        .genre-badge {
+            background-color: #d1bfa7;
+            color: #3a2e1f;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        .back-button {
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="book-container ui grid">
+    <div class="five wide column">
+        <img class="book-cover" src="{{book.thumbnailUrl}}" alt="Book Cover">
+    </div>
+    <div class="eleven wide column">
+        <h1>{{book.title}}</h1>
+        <h3>by {{book.author}}</h3>
+        <p><span class="genre-badge">{{book.genre}}</span></p>
+        <p><strong>Pages:</strong> {{book.pageCount}}</p>
+        <p><strong>ISBN:</strong> {{book.isbn}}</p>
+        <p><strong>Published on:</strong> {{book.publicationDate}}</p>
+        <p style="margin-top: 20px;">{{book.description}}</p>
+
+        <div class="back-button">
+            <a href="/home" class="ui button" style="background-color: #d1bfa7; color: #3a2e1f;">← Back to Home</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
