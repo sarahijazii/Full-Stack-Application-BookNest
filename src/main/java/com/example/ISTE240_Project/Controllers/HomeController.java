@@ -26,11 +26,18 @@ public class HomeController {
 
     @GetMapping("/home")
     public String getHome(Model model) {
+        // Fetch upcoming releases
+        var upcomingReleases = bookService.getUpcomingReleases();
+
+        for (var book : upcomingReleases) {
+            book.setThumbnailUrl("/images/coming-soon.png");
+        }
+
         model.addAttribute("newReleases", bookService.getNewReleases());
         model.addAttribute("twentiethCentury", bookService.getTwentiethCenturyBooks());
         model.addAttribute("thrillers", bookService.getByGenre("Thriller"));
         model.addAttribute("memoirs", bookService.getMemoirs());
-        model.addAttribute("upcoming", bookService.getUpcomingReleases());
+        model.addAttribute("upcoming", upcomingReleases);
         model.addAttribute("allBooks", bookService.getAllBooks());
 
         model.addAttribute("quote", quoteService.getRandomQuote());
@@ -38,5 +45,6 @@ public class HomeController {
 
         return "home";
     }
+
 
 }

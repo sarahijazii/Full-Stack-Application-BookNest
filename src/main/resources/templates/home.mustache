@@ -40,12 +40,10 @@
             <a href="discover" class="item">Discover</a>
             <a href="nobel" class="item">Nobel Prize</a>
             <a href="profile" class="item">Profile</a>
+            <a href="/faqs.html" class="item">FAQs</a>
         </div>
 
         <div class="right menu">
-            <div class="item">
-                <div class="ui fluid input"><input type="text" placeholder="Search books/authors..."></div>
-            </div>
             <div class="item">
                 <button class="ui small button" id="login-btn">Login</button>
                 <button class="ui small button" id="signup-btn" style="background-color: #d1bfa7; color: #3a2e1f;">Signup</button>
@@ -86,7 +84,9 @@
                     <div class="book-list">
                         {{#allBooks}}
                             <a href="/book/{{id}}" class="book-card">
-                                <img src="{{thumbnailUrl}}" alt="Book Cover">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover"
+                                     onerror="this.onerror=null;
+                                             this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
                             </a>
@@ -99,7 +99,9 @@
                     <div class="book-list">
                         {{#thrillers}}
                             <a href="/book/{{id}}" class="book-card">
-                                <img src="{{thumbnailUrl}}" alt="Book Cover">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover"
+                                     onerror="this.onerror=null;
+                                             this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
                             </a>
@@ -112,7 +114,9 @@
                     <div class="book-list">
                         {{#newReleases}}
                             <a href="/book/{{id}}" class="book-card">
-                                <img src="{{thumbnailUrl}}" alt="Book Cover">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover"
+                                     onerror="this.onerror=null;
+                                             this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
                             </a>
@@ -125,7 +129,9 @@
                     <div class="book-list">
                         {{#twentiethCentury}}
                             <a href="/book/{{id}}" class="book-card">
-                                <img src="{{thumbnailUrl}}" alt="Book Cover">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover"
+                                     onerror="this.onerror=null;
+                                             this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
                             </a>
@@ -138,7 +144,9 @@
                     <div class="book-list">
                         {{#memoirs}}
                             <a href="/book/{{id}}" class="book-card">
-                                <img src="{{thumbnailUrl}}" alt="Book Cover">
+                                <img src="{{thumbnailUrl}}" alt="Book Cover"
+                                     onerror="this.onerror=null;
+                                             this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
                                 <p>{{title}} by {{author}}</p>
                                 <span class="genre-badge genre-{{genre.toLowerCase}}">{{genre}}</span>
                             </a>
@@ -196,7 +204,7 @@
                 <label>Password</label>
                 <input type="password" placeholder="Enter your password">
             </div>
-            <button class="ui button primary" type="submit">Login</button>
+            <button class="ui button primary" type="submit" style="background-color: #d1bfa7 !important; color: #3a2e1f !important;">Login</button>
         </form>
     </div>
 </div>

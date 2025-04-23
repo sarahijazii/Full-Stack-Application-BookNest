@@ -23,4 +23,13 @@ public class Book {
 
     @Column(name = "publication_date")
     private LocalDate publicationDate;
+
+    public String getThumbnailUrl() {
+        return thumbnailUrl;
+    }
+
+    public void setThumbnailUrl(String thumbnailUrl) {
+        this.thumbnailUrl = thumbnailUrl;
+    }
+
 }
