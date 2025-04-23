@@ -126,6 +126,46 @@
             color: #3e2723;
         }
 
+        /* FAQ Header Styling */
+        .faq-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #5a3e36;
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #8a6353;
+            padding-bottom: 10px;
+        }
+
+        /* Each FAQ block */
+        .faq-item {
+            background-color: #fff8f0;
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+            transition: transform 0.2s ease;
+        }
+        .faq-item:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Question style */
+        .faq-question {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #5a3e36;
+            margin-bottom: 8px;
+        }
+
+        /* Answer style */
+        .faq-answer {
+            font-size: 1.05rem;
+            color: #3e2723;
+            line-height: 1.7;
+        }
+
+
         .footer {
             background-color: #c7b8ab !important;
             color: white;
@@ -168,7 +208,7 @@
 <!-- SIDEBAR -->
 <div class="ui sidebar visible">
     <img src="/images/logo.png" alt="Logo" class="ui centered image logo">
-    <a href="#home" class="item">Home</a>
+    <a href="home" class="item">Home</a>
     <a href="#discover" class="item">Discover</a>
     <a href="/nobel" class="item">Nobel Prize</a>
     <a href="#profile" class="item">Profile</a>
@@ -184,19 +224,33 @@
 <!-- MAIN FAQ SECTION -->
 <div class="content-wrapper">
     <div class="ui container main-section">
-        <h1 class="ui header" style="color: #5a3e36;">Frequently Asked Questions</h1>
+        <h1 class="faq-title">Frequently Asked Questions</h1>
 
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">What is BookNest?</div>
-                <div class="faq-answer">BookNest is a social platform for book lovers to track, rate, and review books. You can also connect with friends, join reading groups, and explore curated collections like Nobel Prize winners in literature.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Can I see books that have won the Nobel Prize in Literature?</div>
-                <div class="faq-answer">Yes! We have a dedicated section showcasing Nobel Prize winners in Literature, complete with author bios, award years, and notable works. Visit the "Nobel Prize Winners" tab from the main menu.</div>
-            </div>
+        <div class="faq-item">
+            <div class="faq-question">What is BookNest?</div>
+            <div class="faq-answer">BookNest is a cozy home for book lovers! You can browse, track, and discover books and authors, join groups, and explore curated collections like Nobel Prize winners.</div>
         </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I see books that have won the Nobel Prize?</div>
+            <div class="faq-answer">Absolutely! Our Nobel Prize section includes award-winning authors, biographies, and key literary works.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I get updates on new books?</div>
+            <div class="faq-answer">Subscribe to the newsletter at the bottom of the page to stay in the loop on releases and literary insights.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Is BookNest free?</div>
+            <div class="faq-answer">Yes! All features are 100% free — no hidden fees, no premium subscriptions.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I track books I’ve read?</div>
+            <div class="faq-answer">Yes, once logged in, you can add books to your reading list and keep track of your progress.</div>
+        </div>
+
     </div>
     <!-- FOOTER -->
     <footer class="ui inverted vertical segment footer">
@@ -218,17 +272,51 @@
                 <div class="eight wide column">
                     <h4 class="ui inverted">Newsletter</h4>
                     <p>Subscribe for updates on new book releases.</p>
-                    <div class="ui action input">
-                        <input type="email" placeholder="Your email...">
-                        <button class="ui button">Subscribe</button>
-                    </div>
+                    <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
+                        <input type="email" name="email" placeholder="Your email..." required style="background: #f4f1ea; color: #5a3e36; border: 1px solid #8a6353; border-radius: 5px; padding: 10px;">
+                        <button class="ui button" type="submit" style="background-color: #d3d3d3; color: #333;">Subscribe</button>
+                    </form>
                 </div>
             </div>
             <div class="ui center aligned container">
                 <p>© 2025 BookNest. All rights reserved.</p>
             </div>
         </div>
+
+        <!-- Newsletter Feedback Modal -->
+        <div class="ui modal" id="subscription-modal">
+            <div class="header" id="modal-header">Subscription</div>
+            <div class="content">
+                <p id="modal-message">Thanks for subscribing!</p>
+            </div>
+            <div class="actions">
+                <div class="ui approve button">OK</div>
+            </div>
+        </div>
+
     </footer>
 </div>
+
+<!-- Newsletter feedback -->
+<!-- jQuery + Semantic UI JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('subscribed') === 'true') {
+            $('#modal-header').text("You're Subscribed!");
+            $('#modal-message').text("Thanks for subscribing to BookNest 🎉");
+            $('#subscription-modal').modal('show');
+        } else if (urlParams.get('subscribeFailed') === 'true') {
+            $('#modal-header').text("Already Subscribed");
+            $('#modal-message').text("You're already on our list 😊 No need to subscribe again.");
+            $('#subscription-modal').modal('show');
+        }
+    });
+</script>
+
+
 </body>
 </html>
