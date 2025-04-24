@@ -171,37 +171,145 @@
 </div>
 
 
-<!-- FOOTER -->
-<footer class="ui inverted footer sixteen wide column">
-  <div class="ui container" style="padding-top: 50px">
-    <div class="ui stackable divided equal height stackable grid">
-      <div class="four wide column">
-        <h4 class="ui inverted header">Connect With Us</h4>
-        <div class="ui inverted link list">
-          <a href="#" class="item"><i class="facebook icon"></i> Facebook</a>
-          <a href="#" class="item"><i class="twitter icon"></i> Twitter</a>
-          <a href="#" class="item"><i class="instagram icon"></i> Instagram</a>
-        </div>
-      </div>
-      <div class="four wide column">
-        <h4 class="ui inverted header">Contact Us</h4>
-        <p>Email: booknest@gmail.com</p>
-        <p>Phone: +123 456 7890</p>
-      </div>
-      <div class="eight wide column">
-        <h4 class="ui inverted header">Newsletter</h4>
-        <p>Subscribe for updates on new book releases.</p>
-        <div class="ui action input">
-          <input type="email" placeholder="Your email...">
-          <button class="ui button">Subscribe</button>
-        </div>
-      </div>
+<!--login -->
+<div class="ui modal" id="login-modal">
+    <div class="header">Login</div>
+    <div class="content">
+        <form class="ui form">
+            <div class="field">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password">
+            </div>
+            <button class="ui button primary" type="submit" style="background-color: #d1bfa7 !important; color: #3a2e1f !important;">Login</button>
+        </form>
     </div>
-    <div class="ui center aligned container" style="padding-top: 20px;">
-      <p>&#xa9; 2025 BookNest. All rights reserved.</p>
+</div>
+
+<!-- signup -->
+<div class="ui modal" id="signup-modal">
+    <div class="header">Signup</div>
+    <div class="content">
+        <form class="ui form">
+            <div class="field">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your name">
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" placeholder="Create a password">
+            </div>
+            <button class="ui small button" id="signup-submit" style="background-color: #d1bfa7 !important; color: #3a2e1f !important;">Signup</button>
+        </form>
     </div>
-  </div>
+</div>
+
+<!-- footer -->
+<footer class="ui inverted  footer sixteen wide column">
+    <div class="ui container" style="padding-top: 50px">
+        <div class="ui stackable divided equal height stackable grid">
+            <div class="four wide column">
+                <h4 class="ui inverted header">Connect With Us</h4>
+                <div class="ui  inverted link list">
+                    <a href="#" class="item"><i class="facebook icon"></i> Facebook</a>
+                    <a href="#" class="item"><i class="twitter icon"></i> Twitter</a>
+                    <a href="#" class="item"><i class="instagram icon"></i> Instagram</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header">Contact Us</h4>
+                <p>Email: booknest@gmail.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+
+
+            <div class="eight wide column">
+                <h4 class="ui inverted header">Newsletter</h4>
+                <p>Subscribe for updates on new book releases.</p>
+
+                <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
+                    <input type="email" name="email" placeholder="Your email..." required>
+                    <button class="ui button" type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Modal for Subscription Feedback -->
+            <div class="ui modal" id="subscription-modal">
+                <div class="header" id="modal-header">Subscription</div>
+                <div class="content">
+                    <p id="modal-message">Thanks for subscribing!</p>
+                </div>
+                <div class="actions">
+                    <div class="ui approve button">OK</div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="ui center aligned container" style="padding-top: 20px;">
+            <p>&#xa9; 2025 BookNest. All rights reserved.</p>
+        </div>
+    </div>
+
+
+
+
 </footer>
 
+
+<!-- javascript -->
+<script>
+    $(document).ready(function() {
+        $("#login-btn").click(function() {
+            $("#login-modal").modal("show");
+        });
+
+
+
+
+        $("#signup-btn").click(function() {
+            $("#signup-modal").modal("show");
+        });
+
+
+
+
+        $("#mobile-menu-toggle").click(function() {
+            $(".menu-items").toggleClass("active");
+        });
+
+        const subscribed = '{{#subscribed}}true{{/subscribed}}';
+        const subscribeFailed = '{{#subscribeFailed}}true{{/subscribeFailed}}';
+
+        if (subscribed === 'true') {
+            $('#modal-header').text("You're Subscribed!");
+            $('#modal-message').text("Thanks for subscribing to BookNest 🎉");
+            $('#subscription-modal').modal('show');
+        }
+
+        if (subscribeFailed === 'true') {
+            $('#modal-header').text("Already Subscribed");
+            $('#modal-message').text("You're already on our list 😊 No need to subscribe again.");
+            $('#subscription-modal').modal('show');
+        }
+
+
+
+
+    });
+
+
+</script>
+
+
 </body>
+
+
 </html>
