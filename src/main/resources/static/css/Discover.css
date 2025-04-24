@@ -1,0 +1,242 @@
+/*General styling*/
+
+body{
+    font-family: sans-serif;
+    background-color: #f4f1ea;
+}
+
+.column{
+}
+
+.ui.padded.stackable.grid.fluid > .three.wide.column,
+.ui.padded.stackable.grid.fluid > .nine.wide.column,
+.ui.padded.stackable.grid.fluid > .four.wide.column{
+    height: auto;
+    position:relative;
+}
+
+
+
+.ui.input input {
+    width: 200px;
+    max-width: 100%;
+}
+
+.ui.button{
+    font-size: 1rem;
+    padding: 8px 14px;
+}
+
+.right.menu{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.right.menu .ui.input {
+    flex-grow: 1;
+    max-width: 260px;
+}
+
+.right.menu .ui.input input {
+    width: 100%;
+    min-width: 180px;
+    padding: 8px 12px;
+    font-size: 1rem;
+}
+
+.ui.menu .item {
+    color: white;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+}
+
+.ui.menu .item:hover,
+.ui.menu .item:focus {
+    background-color: #8a6353;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/*Footer Styling*/
+
+footer .four.wide.column{
+    background-color: #553e37;
+}
+
+.footer {
+    background-color: #553e37;
+    color:  white;
+    text-align: center;
+}
+
+.footer .ui.inverted.header {
+    font-size: 1.4rem;
+}
+
+.footer .ui.inverted.link.list .item {
+    transition: color 0.3s ease-in-out;
+    font-size: 1.2rem;
+}
+
+.footer .ui.inverted.link.list .item:hover {
+    color: #8a6353;
+}
+
+.footer .ui.action.input input {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #8a6353;
+}
+
+.footer .ui.center.aligned.container p {
+    margin-top: 30px;
+    font-size: 1rem;
+}
+
+/*Genre Bar Styling*/
+
+.genre-bar {
+    background-color: #F5EBE0;
+    z-index: 50;
+    margin-top: -12px;
+}
+
+.genre-bar .ui.stackable.grid {
+    width: 90%;
+    margin: auto;
+}
+
+.genre-bar .ui.stackable.grid .column {
+    padding: 1.4rem;
+}
+
+.genre-bar .ui.button {
+    padding: 25px;
+    font-size: 1.3rem;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 100px;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.genre-bar .ui.button:hover {
+    transform: scale(1.1);
+}
+
+
+/* Applying different background images for each genre*/
+.genre-bar .ui.button.romance { background-image: url('/images/romance.jpg'); }
+.genre-bar .ui.button.horror { background-image: url('/images/horror.jpg'); }
+.genre-bar .ui.button.fantasy { background-image: url('/images/fantasy.jpg'); }
+.genre-bar .ui.button.mystery { background-image: url('/images/mystery.jpg'); }
+.genre-bar .ui.button.scifi { background-image: url('/images/scifi.jpg'); }
+.genre-bar .ui.button.thriller { background-image: url('/images/thriller.jpg'); }
+.genre-bar .ui.button.nonfiction { background-image: url('/images/nonfiction.jpg'); }
+.genre-bar .ui.button.biography { background-image: url('/images/biography.jpg'); }
+
+
+/*Displaying Books*/
+
+.book-display-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 2rem 5%;
+    margin-top: 20px;
+}
+
+.book-card {
+    display: flex;
+    justify-content: center;
+}
+
+/* Book Cards */
+.book-card .ui.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    max-width: 200px;
+    box-sizing: border-box;
+}
+
+.book-card .ui.card:hover {
+    transform: translateY(-5px);
+}
+
+/*image container*/
+.book-card .image {
+    height: 200px;
+    overflow: hidden;
+}
+
+/*actual image*/
+.book-card img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.book-card .content {
+    padding: 12px;
+    text-align: center;
+}
+
+.ui.card {
+    position: relative;
+}
+
+
+/*book title*/
+.book-card .header {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*book card buttons styling*/
+.book-card .hover-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+
+/* Show buttons on hover */
+.book-card .ui.card:hover .hover-buttons {
+    opacity: 1;
+}
+
+/* Style individual buttons */
+.book-card .hover-buttons .ui.icon.button {
+    background-color: white;
+    color: #5a3e36;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 8px;
+    font-size: 1.2rem;
+}
+
+
