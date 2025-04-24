@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> BookNest - Discover Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" href="/Css/Discover.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+  <style>
+    .ui.menu {
+      background-color: #5a3e36;
+      color: white;
+      font-size: 1.3rem;
+      border-radius: 0;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .ui.buttons {
+      position: absolute;
+      margin-top: -14px;
+    }
+    /*Navigation bar Styling*/
+
+    .nav-logo {
+        height: 12.80vh;
+        margin-right: 20px;
+        margin-left: 60px;
+        flex-shrink: 0;
+    }
+
+    /* Add to your navigation styling */
+    .ui.menu {
+        position: relative;
+        z-index: 100; /* Higher than genre bar */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .menu-items {
+        display: flex;
+        gap: 20px;
+    }
+
+    .right.menu {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    /*TABLET AND MOBILE VIEW*/
+    @media (max-width: 900px) {
+        .menu-items,
+        .right.menu {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .ui.menu {
+            flex-direction: column;
+            height: auto;
+            align-items: flex-start;
+        }
+
+        .nav-logo {
+            margin-left: 20px;
+            height: 10vh;
+        }
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAV BAR -->
+<div class="ui menu">
+    <img src="/images/logo-beige.png" alt="BookNest Logo" class="nav-logo">
+
+    <div class="menu-items">
+        <a href="/home" class="item">Home</a>
+        <a href="/discover" class="item">Discover</a>
+        <a href="/nobel" class="item">Nobel Prize</a>
+        <a href="#" class="item">Profile</a>
+    </div>
+
+    <div class="right menu">
+        <div class="item">
+            <button class="ui small button" id="login-btn">Login</button>
+            <button class="ui small primary button" id="signup-btn">Signup</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- GENRE BAR -->
+<div class="ui genre-bar">
+    <div class="ui stackable four column grid container">
+        <div class="column">
+            <a href="/Discover/romance" class="ui fluid button romance">Romance</a>
+        </div>
+        <div class="column">
+            <a href="/Discover/horror" class="ui fluid button horror">Horror</a>
+        </div>
+        <div class="column">
+            <a href="/Discover/fantasy" class="ui fluid button fantasy">Fantasy</a>
+        </div>
+        <div class="column">
+            <a href="/Discover/mystery" class="ui fluid button mystery">Mystery</a>
+        </div>
+        <div class="column">
+            <a href="/Discover/sci-fi" class="ui fluid button scifi">Sci-Fi</a>
+        </div>
+        <div class="column">
+            <a href="/Discover/thriller" class="ui fluid button thriller">Thriller</a>
+        </div>
+        <div class="column">
+            <a href="/Discover/nonfiction" class="ui fluid button nonfiction">Non-Fiction</a>
+        </div>
+        <div class="column">
+            <a href="/Discover/biography" class="ui fluid button biography">Biography</a>
+        </div>
+    </div>
+</div>
+
+<!-- BOOK DISPLAY-->
+
+<div class="book-display-container">
+{{#displayedBooks}}
+    <div class="column book-card">
+        <div class="ui fluid card">
+            <div class="image">
+                <img src="{{thumbnail}}" alt="Book Cover"
+                     onerror="this.onerror=null;
+                             this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
+            </div>
+
+            <!-- Hover Button Icons with Titles -->
+            <div class="hover-buttons">
+                <button class="ui icon button" title="Currently Reading">
+                    <i class="book icon"></i>
+                </button>
+                <button class="ui icon button" title="Want to Read">
+                    <i class="bookmark outline icon"></i>
+                </button>
+                <button class="ui icon button" title="Already Read">
+                    <i class="bookmark icon"></i>
+                </button>
+            </div>
+
+            <div class="content">
+                <div class="header">{{title}}</div>
+            </div>
+        </div>
+    </div>
+{{/displayedBooks}}
+</div>
+
+
+<!-- FOOTER -->
+<footer class="ui inverted footer sixteen wide column">
+  <div class="ui container" style="padding-top: 50px">
+    <div class="ui stackable divided equal height stackable grid">
+      <div class="four wide column">
+        <h4 class="ui inverted header">Connect With Us</h4>
+        <div class="ui inverted link list">
+          <a href="#" class="item"><i class="facebook icon"></i> Facebook</a>
+          <a href="#" class="item"><i class="twitter icon"></i> Twitter</a>
+          <a href="#" class="item"><i class="instagram icon"></i> Instagram</a>
+        </div>
+      </div>
+      <div class="four wide column">
+        <h4 class="ui inverted header">Contact Us</h4>
+        <p>Email: booknest@gmail.com</p>
+        <p>Phone: +123 456 7890</p>
+      </div>
+      <div class="eight wide column">
+        <h4 class="ui inverted header">Newsletter</h4>
+        <p>Subscribe for updates on new book releases.</p>
+        <div class="ui action input">
+          <input type="email" placeholder="Your email...">
+          <button class="ui button">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    <div class="ui center aligned container" style="padding-top: 20px;">
+      <p>&#xa9; 2025 BookNest. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
