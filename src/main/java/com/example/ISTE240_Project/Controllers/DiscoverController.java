@@ -12,20 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/Discover")
 public class DiscoverController {
 
     @Autowired
     private BookService bookService;
 
-    @GetMapping()
+    @GetMapping("/Discover")
     public String getSearch(Model model) {
         List<Book> allBooks = bookService.getAllBooks();
         model.addAttribute("displayedBooks", allBooks);
         return "Discover";
     }
 
-    @GetMapping("/{genre}")
+    @GetMapping("/Discover/{genre}")
     public String getBooksByGenre(@PathVariable("genre") String genre, Model model) {
         List<Book> books = bookService.getByGenre(genre);
         model.addAttribute("displayedBooks", books);
