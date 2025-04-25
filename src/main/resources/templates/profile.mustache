@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> BookNest - Profile </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" href="/images/css/profile.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
+
+    <style>
+        .ui.menu {
+            background-color: #5a3e36;
+            color: white;
+            font-size: 1.3rem;
+            border-radius: 0;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .ui.buttons{
+            position: absolute;
+            margin-top: -14px;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<div class="ui padded stackable grid fluid ">
+
+    <!-- NAV BAR -->
+    <div class="ui menu">
+
+        <div class="ui container">
+
+
+            <div class ="nav-logo-container">
+                <img src="/images/logo-beige.png" alt="BookNest Logo" class="nav-logo">
+            </div>
+
+            <div class="menu-items">
+                <a href="/home/{{email}}" class="item">Home</a>
+                <a href="/GenreSearch/{{email}}" class="item">Discover</a>
+                <a href="#" class="item">Nobel Prize</a>
+                <a href="#" class="item">Profile</a>
+            </div>
+
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui fluid input"><input type="text" placeholder="Search books/authors..."></div>
+                </div>
+                <div class="item">
+                    <button class="ui small button" id="signout-btn">Sign out </button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BIO -->
+    <div class="bio sixteen wide column" style="margin-top: 11vh">
+        {{bio}}
+    </div>
+
+    <!-- FAVORITES -->
+    <div class="three wide column">
+        <div>
+            <h4 class="ui header" style="margin-bottom:25px;margin-top:10px;color:#42322d"> {{displayname}}'s Favorites </h4>
+            <div class="book"> <img src="/images/book-cover-placeholder.png" alt="book-cover"> <p> Book Title </p> </div>
+            <div class="book"> <img src="/images/book-cover-placeholder.png" alt="book-cover"> <p> Book Title </p> </div>
+            <div class="book"> <img src="/images/book-cover-placeholder.png" alt="book-cover"> <p> Book Title </p> </div>
+            <div class="book"> <img src="/images/book-cover-placeholder.png" alt="book-cover"> <p> Book Title </p> </div>
+
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="nine wide column">
+
+
+        <div style="display:flex;justify-content: center;width:100%">
+        <div class="ui buttons">
+            <button class="ui button"  id="libraryButton" style="border-radius: 0;background-color: #c7b8ab;color:#42322d "> Library </button>
+            <button class="ui button"   id="activityButton" style="border-radius: 0; background-color: #c7b8ab;color:#42322d" > Activity </button>
+        </div>
+        </div>
+
+
+
+        <!-- library -->
+        <div class="library"  id="library">
+            <h2 class="ui header" style="color:#42322d"> {{displayname}}'s Library </h2>
+            <h4 class="ui header">  Lost in the pages of...</h4>
+            <div class="current-book" >
+                {{#currentbooks}}
+                <img src="{{thumbnail}}" alt="book-cover" width="20%" height="20%" >
+                <div style="padding-right: 50px">
+                <h4 class="ui header" style="color:#42322d" > {{title}} </h4>
+                <p style="width:150px;"> by {{author}} </p>
+                    <div class="ui progress" data-percent="{{progressBarPercentage}}" style="width:190px;">
+                        <div class="bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                    <button class="ui button update" onclick="currentlyReading({{{id}}})" style="border-radius: 0" >UPDATE</button>
+                </div>
+                {{/currentbooks}}
+
+            </div>
+
+            <h4 class="ui header"> Once upon a time I read... </h4>
+            <div class="books">
+                {{#alreadyread}}
+                <div class="book"> <img src="{{thumbnail}}" alt="book-cover"> <p > {{title}} </p> </div>
+                {{/alreadyread}}
+
+            </div>
+
+            <h4 class="ui header">Nightstand Novels </h4>
+            <div class="books">
+                {{#wanttoread}}
+                <div class="book" style="padding-right: 15px"> <img src="{{thumbnail}}" alt="book-cover">
+                    <p> {{title}} </p>
+                </div>
+                {{/wanttoread}}
+
+            </div>
+
+        </div>
+        <!-- activity -->
+        <div class="activity" id="activity">
+            <h2 class="ui header" style="color:#42322d"> {{displayname}}'s Activity </h2>
+            {{#reviews}}
+            <div class="current-book" >
+                <img src="{{thumbnail}}" alt="book-cover" width="20%" height="20%" >
+                <div >
+                    <h4 class="ui header" style="color:#42322d"> {{title}}</h4>
+                    <p>by<i>  {{author}}</i></p>
+                    <p> <b style="color:#42322d"> Description:</b> {{description}}</p>
+
+                    <p> <b style="color:#42322d"> @{{username}} </b> : {{review}} </p>
+
+                </div>
+            </div>
+            {{/reviews}}{{^reviews}} <div class ="current-book"> Explore and leave some reviews! </div>{{/reviews}}
+
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PROFILE -->
+    <div class="four wide column" >
+
+            <div class="profile-container">
+
+                <img class="ui medium circular image" src="{{#image}}{{image}}{{/image}}{{^image}}/images/square-image.jpg{{/image}}">
+
+
+
+            </div>
+
+
+            <div class="profile-content" >
+                <h4 class="ui header"  > {{displayname}} </h4>
+
+                <div>
+                    <h4 class="ui header" >  Books Read </h4>
+                <p>   {{numberofbooksread}} </p>
+                </div>
+
+                <div>
+                    <h4 class="ui header" >  Favorite Genre  </h4>
+                <p> Romance </p>
+                <div class="piechart"></div>
+                </div>
+
+                <div>
+                    <h4 class="ui header" >  Average Rating </h4>
+                <p> # </p>
+                </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- update currently reading -->
+    <div class="ui modal" id="currently-reading-modal">
+        <div class="header">Update Your Progress</div>
+        <div class="content">
+            <form id="currently-reading-form" class="ui form" method="post" >
+                <div class="field">
+                    <label for="pagesRead">Pages Read</label>
+                    <input type="number" name="pagesRead" placeholder="Enter how many pages you've read">
+                </div>
+                <button class="ui button primary"  type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="ui inverted  footer sixteen wide column">
+        <div class="ui container" style="padding-top: 50px">
+            <div class="ui stackable divided equal height stackable grid">
+                <div class="four wide column">
+                    <h4 class="ui inverted header">Connect With Us</h4>
+                    <div class="ui  inverted link list">
+                        <a href="#" class="item"><i class="facebook icon"></i> Facebook</a>
+                        <a href="#" class="item"><i class="twitter icon"></i> Twitter</a>
+                        <a href="#" class="item"><i class="instagram icon"></i> Instagram</a>
+                    </div>
+                </div>
+                <div class="four wide column">
+                    <h4 class="ui inverted header">Contact Us</h4>
+                    <p>Email: booknest@gmail.com</p>
+                    <p>Phone: +123 456 7890</p>
+                </div>
+                <div class="eight wide column">
+                    <h4 class="ui inverted header">Newsletter</h4>
+                    <p>Subscribe for updates on new book releases.</p>
+                    <div class="ui action input">
+                        <input type="email" placeholder="Your email...">
+                        <button class="ui button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ui center aligned container" style="padding-top: 20px;">
+                <p>&#xa9; 2025 BookNest. All rights reserved.</p>
+            </div>
+        </div>
+
+    </footer>
+
+
+
+
+
+
+</div>
+<script>
+    const userEmail = "{{email}}";
+    $(document).ready(function () {
+        // Show Library and hide Activity
+        $('#libraryButton').click(function () {
+            $('.library').show();
+            $('.activity').hide();
+        });
+
+        // Show Activity and hide Library
+        $('#activityButton').click(function () {
+            $('.library').hide();
+            $('.activity').show();
+        });
+
+        $('.ui.progress').progress({
+        });
+
+    });
+    function currentlyReading(id){
+        // creating a dynamic url, we need this because we cant define the url directly in the form as the id and email will constantly change
+        const formAction = `/${userEmail}/${id}/UpdateCurrentlyReading`;
+        // setting the forms action attribute to the dynamic url
+        $("#currently-reading-form").attr("action", formAction);
+        $("#currently-reading-modal").modal("show");
+    }
+</script>
+
+</body>
+</html>

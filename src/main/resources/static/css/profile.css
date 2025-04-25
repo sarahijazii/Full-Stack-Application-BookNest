@@ -1,0 +1,280 @@
+body{
+    font-family: sans-serif;
+    background-color: #f4f1ea;
+
+
+}
+.column{
+
+}
+
+.ui.padded.stackable.grid.fluid > .three.wide.column,.ui.padded.stackable.grid.fluid > .nine.wide.column,.ui.padded.stackable.grid.fluid > .four.wide.column{
+    height: auto;
+    position:relative;
+
+
+}
+
+
+.nav-logo {
+    height: 12.80vh;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.menu-items {
+    display: flex;
+    gap: 20px;
+}
+.right.menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+    justify-content: flex-end;
+}
+.ui.input input {
+    width: 200px;
+    max-width: 100%;
+}
+
+
+
+
+.ui.button{
+    font-size: 1rem;
+    padding: 8px 14px;
+}
+
+.right.menu{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+
+}
+
+
+
+.right.menu .ui.input {
+    flex-grow: 1;
+    max-width: 260px;
+}
+
+.right.menu .ui.input input {
+    width: 100%;
+    min-width: 180px;
+    padding: 8px 12px;
+    font-size: 1rem;
+}
+
+.ui.menu .item {
+    color: white;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+}
+.ui.menu .item:hover,
+.ui.menu .item:focus {
+    background-color: #8a6353;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/** profile CSS **/
+
+.four.wide.column{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    background-color: #c7b8ab;
+
+
+}
+.ui.padded.stackable.grid.fluid > .four.wide.column div{
+    padding-bottom: 15px;
+    justify-items: center;
+
+
+}
+
+
+.profile-container{
+    margin-top: -50px;
+    width:100%;
+    height:160px;
+
+
+}
+.ui.medium.circular.image{
+    height:100%;
+    width:150px;
+
+}
+
+.piechart {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-image: conic-gradient(
+            #5a3e36 70deg,
+            #826158 0 235deg,
+            #c1a49c 0
+    );
+}
+
+
+
+.profile-content > .ui.header, .profile-content > div{
+    margin-bottom: 25%;
+}
+
+.profile-content .ui.header:first-child {
+    font-size: 1.2rem;
+
+
+}
+.ui.header{
+    color: #42322d;
+}
+
+/** main **/
+
+
+
+
+
+
+
+.activity{
+    margin-left:10px;
+    margin-top:50px;
+    z-index: 1;
+    position: relative;
+    display:none;
+
+}
+
+.library{
+    margin-left:10px;
+    margin-top:50px;
+    position: relative;
+    display: block;
+    z-index: 200;
+
+
+
+
+}
+.current-book{
+    display:flex;
+    margin-top:25px;
+    gap:20px;
+    align-items: center;
+    margin-bottom:25px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: auto;
+
+
+
+
+}
+
+.books{
+    display: flex;
+    gap:20px;
+    margin-top:25px;
+    align-items: center;
+    margin-bottom: 25px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: auto; /** optional if arrow doesnt work **/
+}
+.book img{
+    width:100px;
+    height:150px;
+}
+
+.book{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.book p{
+    margin-top:5px;
+
+
+}
+.book-list-arrow{
+    display: flex;
+    justify-content: flex-end;
+    width:13%;
+    transform: scale(1.5,1.5);
+    color:#42322d;
+    margin-top:-10px;
+}
+
+
+/** favorite books **/
+
+.three.wide.column{
+    background-color: #c7b8ab;
+}
+
+.three.wide.column div{
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom:30px;
+    align-items: center;
+}
+
+/** bio **/
+
+.bio.sixteen.wide.column{
+    background-color: #553e37;
+    color:white;
+}
+
+/** footer **/
+
+
+footer .four.wide.column{
+    background-color: #553e37;
+
+}
+.footer {
+    background-color: #553e37;
+    color:  white;
+    text-align: center;
+}
+
+.footer .ui.inverted.header {
+    font-size: 1.4rem;
+}
+
+.footer .ui.inverted.link.list .item {
+    transition: color 0.3s ease-in-out;
+    font-size: 1.2rem;
+}
+
+.footer .ui.inverted.link.list .item:hover {
+    color: #8a6353;
+}
+
+.footer .ui.action.input input {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #8a6353;
+}
+
+.footer .ui.center.aligned.container p {
+    margin-top: 30px;
+    font-size: 1rem;
+
+}
+
