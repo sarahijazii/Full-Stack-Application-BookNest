@@ -10,7 +10,7 @@ public class CurrentlyReading {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column
     private String isbn;
@@ -54,7 +54,7 @@ public class CurrentlyReading {
     }
 
     // GETTERS
-    public Long getId() {return id;}
+    public int getId() {return id;}
     public String getIsbn() {return isbn;}
     public String getTitle() {return title;}
     public String getAuthor() {return author;}
@@ -69,7 +69,7 @@ public class CurrentlyReading {
     public int getProgressBarPercentage() {return progressBarPercentage;}
 
     // SETTERS
-    public void setId(Long id) {this.id = id;}
+    public void setId(int id) {this.id = id;}
     public void setIsbn(String isbn) {this.isbn = isbn;}
     public void setTitle(String title) {this.title = title;}
     public void setAuthor(String author) {this.author = author;}
