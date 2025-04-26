@@ -87,9 +87,12 @@
     <!-- FAVORITES -->
     <div class="three wide column">
         <div>
-            <h4 class="ui header" style="margin-bottom:25px;margin-top:10px;color:#42322d"> {{displayname}}'s Favorites </h4>
+            <h3 class="ui header" style="margin-bottom:40px;margin-top:15px;color:#42322d"> {{displayname}}'s Favorites </h3>
             {{#favoritebooks}}
-            <div class="book"> <img src={{thumbnailUrl}} alt="book-cover"> <p> {{title}} </p> </div>
+            <div class="book"> <img src={{thumbnailUrl}} alt="book-cover"
+                                    onerror="this.onerror=null;
+                                            this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
+                <p style="margin-top: 10px;width:70%;font-weight: normal"> {{title}} </p> </div>
 
             {{/favoritebooks}}
         </div>
@@ -111,10 +114,12 @@
         <!-- library -->
         <div class="library"  id="library">
             <h2 class="ui header" style="color:#42322d"> {{displayname}}'s Library </h2>
-            <h4 class="ui header">  Lost in the pages of...</h4>
+            <h3 class="ui header">  Lost in the pages of...</h3>
             <div class="current-book" >
                 {{#currentbooks}}
-                <img src="{{thumbnailUrl}}" alt="book-cover" width="20%" height="20%" >
+                <img src="{{thumbnailUrl}}" alt="book-cover" width="20%" height="20%" style="border-radius: 5px;"
+                     onerror="this.onerror=null;
+                             this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
                 <div style="padding-right: 50px">
                 <h4 class="ui header" style="color:#42322d" > {{title}} </h4>
                 <p style="width:150px;"> by {{author}} </p>
@@ -129,18 +134,21 @@
 
             </div>
 
-            <h4 class="ui header"> Once upon a time I read... </h4>
+            <h3 class="ui header"> Once upon a time I read... </h3>
             <div class="books">
                 {{#alreadyread}}
-                <div class="book"> <img src="{{thumbnailUrl}}" alt="book-cover"> <p > {{title}} </p> </div>
+                <div class="book"> <img src="{{thumbnailUrl}}" alt="book-cover" onerror="this.onerror=null;
+                        this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
+                    <p> {{title}} </p> </div>
                 {{/alreadyread}}
 
             </div>
 
-            <h4 class="ui header">Nightstand Novels </h4>
-            <div class="books">
+            <h3 class="ui header">Nightstand Novels </h3>
+            <div class="books" style="margin-bottom: 0px;">
                 {{#wanttoread}}
-                <div class="book" style="padding-right: 15px"> <img src="{{thumbnailUrl}}" alt="book-cover">
+                <div class="book" style="padding-right: 15px"> <img src="{{thumbnailUrl}}" alt="book-cover" onerror="this.onerror=null;
+                        this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
                     <p> {{title}} </p>
                 </div>
                 {{/wanttoread}}
@@ -153,13 +161,19 @@
             <h2 class="ui header" style="color:#42322d"> {{displayname}}'s Activity </h2>
             {{#reviews}}
             <div class="current-book" >
-                <img src="{{thumbnailUrl}}" alt="book-cover" width="20%" height="20%" >
+                <img src="{{thumbnailUrl}}" alt="book-cover" width="20%" height="20%" style="border-radius: 5px;"
+                        onerror="this.onerror=null;
+                        this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
                 <div >
-                    <h4 class="ui header" style="color:#42322d"> {{title}}</h4>
+                    <h3 class="ui header" style="color:#42322d"> {{title}}</h3>
                     <p>by<i>  {{author}}</i></p>
                     <p> <b style="color:#42322d"> Description:</b> {{description}}</p>
 
-                    <p> <b style="color:#42322d"> @{{username}} </b> : {{review}} </p>
+                    <p> <b style="color:#42322d"> Book Completion:</b> {{endDate}}</p>
+
+                    <p> <b style="color:#42322d"> Rating:</b> {{rating}}/5 stars</p>
+
+                    <p style="font-style: italic"> <b style="color:#42322d"> @{{username}} </b> : {{review}} </p>
 
                 </div>
             </div>
