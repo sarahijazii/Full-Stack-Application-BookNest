@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="WANT_TO_READ")
+@Table(name="WANT_TO_READ",uniqueConstraints = @UniqueConstraint(columnNames = {"email", "isbn"})) // disables user from adding the same book multiple times
 public class WantToRead {
 
     @Id

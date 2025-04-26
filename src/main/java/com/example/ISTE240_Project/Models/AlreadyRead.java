@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="ALREADY_READ")
+@Table(name="ALREADY_READ",uniqueConstraints = @UniqueConstraint(columnNames = {"email", "isbn"})) // disables user from adding the same book multiple times
+
 public class AlreadyRead {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
