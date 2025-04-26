@@ -3,6 +3,7 @@ package com.example.ISTE240_Project.Controllers;
 import com.example.ISTE240_Project.Models.*;
 import com.example.ISTE240_Project.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
@@ -49,7 +51,6 @@ public class BookNestController {
 
     @Autowired
     private final NewsletterService newsletterService;
-
 
 
     public BookNestController(BookService bookService, QuoteService quoteService, FunFactService funFactService, NobelService nobelService, NewsletterService newsletterService) {
@@ -133,7 +134,7 @@ public class BookNestController {
     }
 
     @GetMapping("/book/{email}/{id}")
-    public String getBookDetails(@PathVariable String email, @PathVariable Long id, Model model) {
+    public String getBookDetails(@PathVariable String email, @PathVariable int id, Model model) {
         Book book = bookService.getBookById(id);
         model.addAttribute("email",email);
         if (book == null) {
@@ -227,6 +228,15 @@ public class BookNestController {
         return "authors"; // This should map to author.mustache
     }
 
+
+    @PostMapping("/{email}/{id}/ToRead")
+    public void toReadBook(@PathVariable String email,@PathVariable int id){
+        Book addedbook = bookService.getBookById(id);
+        wantToReadService.addBook(addedbook, email);
+
+
+
+    }
 
 
 

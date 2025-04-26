@@ -155,7 +155,7 @@
                 <button class="ui icon button" title="Currently Reading">
                     <i class="book icon"></i>
                 </button>
-                <button class="ui icon button" title="Want to Read">
+                <button class="ui icon button" onclick="bookToRead({{id}})" title="Want to Read">
                     <i class="bookmark outline icon"></i>
                 </button>
                 <button class="ui icon button" title="Already Read">
@@ -267,20 +267,14 @@
 
 <!-- javascript -->
 <script>
+    // we place it outside because the onclick attribute cant reach it otherwise as it wont be global
+    function bookToRead(id) {
+        // connecting the post method to the button
+        fetch(`/{{email}}/${id}/ToRead`, {
+            method: 'POST'
+        })}
+
     $(document).ready(function() {
-        $("#login-btn").click(function() {
-            $("#login-modal").modal("show");
-        });
-
-
-
-
-        $("#signup-btn").click(function() {
-            $("#signup-modal").modal("show");
-        });
-
-
-
 
         $("#mobile-menu-toggle").click(function() {
             $(".menu-items").toggleClass("active");
@@ -300,8 +294,6 @@
             $('#modal-message').text("You're already on our list 😊 No need to subscribe again.");
             $('#subscription-modal').modal('show');
         }
-
-
 
 
     });

@@ -23,7 +23,7 @@ public class BookService {
         return repo.findAll();
     }
 
-    public Book getBookById(Long id) {
+    public Book getBookById(int id) {
         return repo.findById(id).orElse(null);
     }
 
