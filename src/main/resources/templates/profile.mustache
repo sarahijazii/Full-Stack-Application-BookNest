@@ -5,7 +5,7 @@
     <title> BookNest - Profile </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <link rel="stylesheet" href="/images/css/profile.css">
+    <link rel="stylesheet" href="/css/profile.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
@@ -51,15 +51,14 @@
 
             <div class="menu-items">
                 <a href="/home/{{email}}" class="item">Home</a>
-                <a href="/GenreSearch/{{email}}" class="item">Discover</a>
-                <a href="#" class="item">Nobel Prize</a>
-                <a href="#" class="item">Profile</a>
+                <a href="/Discover/{{email}}" class="item">Discover</a>
+                <a href="/nobel/{{email}}" class="item">Nobel Prize</a>
+                <a href="/profile/{{email}}" class="item">Profile</a>
+                <a href="/faqs.html" class="item">FAQs</a>
             </div>
 
             <div class="right menu">
-                <div class="item">
-                    <div class="ui fluid input"><input type="text" placeholder="Search books/authors..."></div>
-                </div>
+
                 <div class="item">
                     <button class="ui small button" id="signout-btn">Sign out </button>
 

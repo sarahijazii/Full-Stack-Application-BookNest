@@ -36,10 +36,10 @@
 
 
         <div class="menu-items">
-            <a href="/home" class="item">Home</a>
-            <a href="/Discover" class="item">Discover</a>
-            <a href="/nobel" class="item">Nobel Prize</a>
-            <a href="profile" class="item">Profile</a>
+            <a href="/home/{{email}}" class="item">Home</a>
+            <a href="/Discover/{{email}}" class="item">Discover</a>
+            <a href="/nobel/{{email}}" class="item">Nobel Prize</a>
+            <a href="/profile/{{email}}" class="item">Profile</a>
             <a href="/faqs.html" class="item">FAQs</a>
         </div>
 
@@ -83,7 +83,7 @@
                     <h2>All Books</h2>
                     <div class="book-list">
                         {{#allBooks}}
-                            <a href="/book/{{id}}" class="book-card">
+                            <a href="/book/{{email}}/{{id}}" class="book-card">
                                 <img src="{{thumbnailUrl}}" alt="Book Cover"
                                      onerror="this.onerror=null;
                                              this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
@@ -98,7 +98,7 @@
                     <h2>Thrillers You Must Read</h2>
                     <div class="book-list">
                         {{#thrillers}}
-                            <a href="/book/{{id}}" class="book-card">
+                            <a href="/book/{{email}}/{{id}}" class="book-card">
                                 <img src="{{thumbnailUrl}}" alt="Book Cover"
                                      onerror="this.onerror=null;
                                              this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
@@ -113,7 +113,7 @@
                     <h2>New Releases This Year</h2>
                     <div class="book-list">
                         {{#newReleases}}
-                            <a href="/book/{{id}}" class="book-card">
+                            <a href="/book/{{email}}/{{id}}" class="book-card">
                                 <img src="{{thumbnailUrl}}" alt="Book Cover"
                                      onerror="this.onerror=null;
                                              this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
@@ -128,7 +128,7 @@
                     <h2>Best Books of the 20th Century</h2>
                     <div class="book-list">
                         {{#twentiethCentury}}
-                            <a href="/book/{{id}}" class="book-card">
+                            <a href="/book/{{email}}/{{id}}" class="book-card">
                                 <img src="{{thumbnailUrl}}" alt="Book Cover"
                                      onerror="this.onerror=null;
                                              this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
@@ -143,7 +143,7 @@
                     <h2>Best Memoir/Biography</h2>
                     <div class="book-list">
                         {{#memoirs}}
-                            <a href="/book/{{id}}" class="book-card">
+                            <a href="/book/{{email}}/{{id}}" class="book-card">
                                 <img src="{{thumbnailUrl}}" alt="Book Cover"
                                      onerror="this.onerror=null;
                                              this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
@@ -195,7 +195,7 @@
 <div class="ui modal" id="login-modal">
     <div class="header">Login</div>
     <div class="content">
-        <form class="ui form">
+        <form class="ui form" method="post" action="/home/login">
             <div class="field">
                 <label>Email</label>
                 <input type="email" placeholder="Enter your email">
@@ -213,23 +213,36 @@
 <div class="ui modal" id="signup-modal">
     <div class="header">Signup</div>
     <div class="content">
-        <form class="ui form">
+        <form method="post" action="/home/signup"  class="ui form" enctype="multipart/form-data">
             <div class="field">
-                <label>Full Name</label>
-                <input type="text" placeholder="Enter your name">
+                <label for="name">Display Name</label>
+                <input type="text" name="displayName" placeholder="Enter your name">
             </div>
             <div class="field">
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email">
+                <label for="username">Username</label>
+                <input type="text" name="username" placeholder="Enter your username">
             </div>
             <div class="field">
-                <label>Password</label>
-                <input type="password" placeholder="Create a password">
+                <label for="bio">Bio</label>
+                <input type="text" name="bio" placeholder="Enter your bio">
             </div>
-            <button class="ui small button" id="signup-submit" style="background-color: #d1bfa7 !important; color: #3a2e1f !important;">Signup</button>
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Create a password">
+            </div>
+            <div class="field">
+                <label for="profilepicture">Select a Profile Picture </label>
+                <input type="file" name="profilepicture" accept="image/*">
+            </div>
+            <button class="ui button primary" type="submit">Signup</button>
         </form>
     </div>
 </div>
+
 
 <!-- footer -->
 <footer class="ui inverted  footer sixteen wide column">
@@ -254,8 +267,8 @@
                 <h4 class="ui inverted header">Newsletter</h4>
                 <p>Subscribe for updates on new book releases.</p>
 
-                <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
-                    <input type="email" name="email" placeholder="Your email..." required>
+                <form action="/subscribe/{{email}}" method="post" class="ui action input" style="width: 100%;">
+                    <input type="email" name="newsletteremail" placeholder="Your email..." required>
                     <button class="ui button" type="submit">Subscribe</button>
                 </form>
             </div>
@@ -287,19 +300,6 @@
 <!-- javascript -->
 <script>
     $(document).ready(function() {
-        $("#login-btn").click(function() {
-            $("#login-modal").modal("show");
-        });
-
-
-
-
-        $("#signup-btn").click(function() {
-            $("#signup-modal").modal("show");
-        });
-
-
-
 
         $("#mobile-menu-toggle").click(function() {
             $(".menu-items").toggleClass("active");
@@ -321,9 +321,9 @@
         }
 
 
-
-
     });
+
+
 
 
 </script>
