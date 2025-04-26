@@ -11,5 +11,6 @@ import java.util.List;
 public interface WantToReadRepository extends JpaRepository<WantToRead,Integer> {
 
     public List<WantToRead> findAllByEmail(String email);
+    public void deleteById(int id);
 }
 

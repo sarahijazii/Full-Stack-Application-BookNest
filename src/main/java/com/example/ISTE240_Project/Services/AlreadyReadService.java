@@ -5,6 +5,7 @@ import com.example.ISTE240_Project.Models.AlreadyRead;
 import com.example.ISTE240_Project.Models.Book;
 import com.example.ISTE240_Project.Models.CurrentlyReading;
 import com.example.ISTE240_Project.modelsDAO.AlreadyReadRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -127,6 +128,6 @@ public class AlreadyReadService {
             return "In Discovery!"; // if all counts are 0 or equal
         }
 
-
     }
+
 }

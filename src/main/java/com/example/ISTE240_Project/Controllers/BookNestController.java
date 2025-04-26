@@ -246,7 +246,7 @@ public class BookNestController {
     }
 
     @PostMapping("/{email}/{id}/UpdateCurrentlyReading")
-    public String updateCurrentlyReading(@PathVariable String email,@PathVariable Long id,@RequestParam int pagesRead){
+    public String updateCurrentlyReading(@PathVariable String email,@PathVariable int id,@RequestParam int pagesRead){
         currentlyReadingService.updateBook(id,pagesRead);
         return "redirect:/profile/" + email;
     }

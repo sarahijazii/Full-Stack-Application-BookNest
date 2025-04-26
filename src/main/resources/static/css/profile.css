@@ -1,3 +1,24 @@
+
+.ui.menu {
+    background-color: #5a3e36;
+    color: white;
+    font-size: 1.3rem;
+    border-radius: 0;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.ui.buttons{
+    position: absolute;
+    margin-top: -14px;
+}
+
 body{
     font-family: sans-serif;
     background-color: #f4f1ea;
@@ -28,10 +49,7 @@ body{
     flex-grow: 1;
     justify-content: flex-end;
 }
-.ui.input input {
-    width: 200px;
-    max-width: 100%;
-}
+
 
 .ui.button{
     font-size: 1rem;
@@ -49,18 +67,6 @@ body{
     gap: 15px;
     flex-shrink: 0;
 
-}
-
-.right.menu .ui.input {
-    flex-grow: 1;
-    max-width: 260px;
-}
-
-.right.menu .ui.input input {
-    width: 100%;
-    min-width: 180px;
-    padding: 8px 12px;
-    font-size: 1rem;
 }
 
 .ui.menu .item {
@@ -257,3 +263,91 @@ footer .four.wide.column{
     font-size: 1rem;
 }
 
+/* responsive media query for mobile view */
+@media (max-width: 900px) {
+
+
+    .ui.menu {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 0;
+        height: auto;
+        position: relative;
+        order:1;
+    }
+
+    .bio{
+        order:2;
+    }
+
+    .profile{
+        order:3;
+    }
+
+    .nine.wide.column{
+        order:4;
+    }
+
+    .three.wide.column{
+        order:5;
+    }
+
+    .footer{
+        order:6;
+    }
+    .nav-logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 10px;
+        order: 1;
+    }
+
+
+    .nav-logo {
+        height: 45px;
+    }
+
+
+    .right.menu {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 8px;
+        order: 2;
+    }
+
+
+    .right.menu .item {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 5px;
+    }
+
+
+    .right.menu .ui.button {
+        width: 40%;
+        font-size: 0.8rem;
+        padding: 5px 8px;
+        text-align: center;
+    }
+
+
+    .menu-items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+
+    .menu-items a {
+        padding: 10px;
+    }
+}

@@ -17,4 +17,5 @@ public interface AlreadyReadRepository extends JpaRepository<AlreadyRead,Integer
     List<AlreadyRead> findByEmailAndGenreIgnoreCase(String email,String genre);
 
 
+
 }

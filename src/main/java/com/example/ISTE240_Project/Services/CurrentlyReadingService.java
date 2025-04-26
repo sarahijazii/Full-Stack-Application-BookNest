@@ -17,6 +17,8 @@ public class CurrentlyReadingService {
     @Autowired
     private CurrentlyReadingRepository currentlyReadingRepository;
 
+
+
     public void addBook(Book book, String email, int pagesRead, LocalDate startDate){
         CurrentlyReading currentlyReading = new CurrentlyReading();
         currentlyReading.setIsbn(book.getIsbn());
@@ -32,12 +34,13 @@ public class CurrentlyReadingService {
         currentlyReading.setStartDate(startDate);
         int percent = (int)(((double) pagesRead / currentlyReading.getPageCount()) * 100);
         currentlyReading.setProgressBarPercentage(percent);
+
         currentlyReadingRepository.save(currentlyReading);
 
     }
 
     @Transactional
-    public void updateBook(Long id, int pagesRead){
+    public void updateBook(int id, int pagesRead){
         currentlyReadingRepository.findById(id).ifPresent(currentlyReading -> {
             currentlyReading.setPagesRead(pagesRead);
             int percent = (int)(((double) pagesRead / currentlyReading.getPageCount()) * 100);
@@ -49,7 +52,9 @@ public class CurrentlyReadingService {
         return currentlyReadingRepository.findAllByEmail(email);
     }
 
-    public Optional<CurrentlyReading> getBookById(Long id) {
+    public Optional<CurrentlyReading> getBookById(int id) {
         return currentlyReadingRepository.findById(id);
     }
+
+
 }

@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface CurrentlyReadingRepository extends JpaRepository<CurrentlyReading,Integer> {
 
     public List<CurrentlyReading> findAllByEmail(String email);
-    public Optional<CurrentlyReading> findById(Long id);
+    public Optional<CurrentlyReading> findById(int id);
 
 
 }
