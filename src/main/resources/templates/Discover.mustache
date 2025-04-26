@@ -159,7 +159,7 @@
                 <button class="ui icon button" onclick="bookToRead({{id}})" title="Want to Read">
                     <i class="bookmark outline icon"></i>
                 </button>
-                <button class="ui icon button" title="Already Read">
+                <button class="ui icon button" onclick="alreadyRead({{{id}}})" title="Already Read">
                     <i class="bookmark icon"></i>
                 </button>
             </div>
@@ -226,6 +226,33 @@
                 <label for="pagesRead">Pages Read</label>
                 <input type="number" name="pagesRead" placeholder="Enter how many pages you've read">
             </div>
+            <button class="ui button primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<!--already read -->
+<div class="ui modal" id="already-read-modal">
+    <div class="header">Add to Read Books </div>
+    <div class="content">
+        <form id="already-read-form" class="ui form" method="post" >
+            <div class="field">
+                <label for="startDate">Start Date</label>
+                <input type="date" name="startDate">
+            </div>
+            <div class="field">
+                <label for="endDate">End Date</label>
+                <input type="date" name="endDate">
+            </div>
+            <div class="field">
+                <label for="review">Review the Book</label>
+                <textarea name="review" placeholder="A quiet space for your reflections..." rows="4" cols="50"> </textarea>
+            </div>
+            <div class="field">
+                <label for="rating">Rate the Book</label>
+                <input type="number" name="rating" placeholder="From a scale of 1-5, how many stars does it deserve?"> </input>
+            </div>
+
             <button class="ui button primary" type="submit">Submit</button>
         </form>
     </div>
@@ -299,6 +326,12 @@
         // setting the forms action attribute to the dynamic url
         $("#currently-reading-form").attr("action", formAction);
         $("#currently-reading-modal").modal("show");
+    }
+
+    function alreadyRead(id){
+        const formAction = `/{{email}}/${id}/AlreadyRead`;
+        $("#already-read-form").attr("action", formAction);
+        $("#already-read-modal").modal("show");
     }
 
 

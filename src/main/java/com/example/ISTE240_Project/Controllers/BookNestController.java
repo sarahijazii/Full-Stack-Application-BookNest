@@ -250,6 +250,14 @@ public class BookNestController {
         return "redirect:/profile/" + email;
     }
 
+    @PostMapping("/{email}/{id}/AlreadyRead")
+    public String alreadyReadBook(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam String review, @RequestParam int rating, @PathVariable String email,@PathVariable int id){
+        Book addedbook = bookService.getBookById(id);
+        alreadyReadService.addBook(addedbook, email, startDate, endDate, review, rating);
+        return "redirect:/Discover/" +email;
+
+    }
+
 
 
 
