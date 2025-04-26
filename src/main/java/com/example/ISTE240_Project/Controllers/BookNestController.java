@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
@@ -233,10 +234,17 @@ public class BookNestController {
     public void toReadBook(@PathVariable String email,@PathVariable int id){
         Book addedbook = bookService.getBookById(id);
         wantToReadService.addBook(addedbook, email);
+    }
 
-
+    @PostMapping("/{email}/{id}/CurrentlyReading")
+    public String currentlyReadBook(@RequestParam int pagesRead, @RequestParam LocalDate startDate, @PathVariable String email, @PathVariable int id) {
+        Book addedbook = bookService.getBookById(id);
+        currentlyReadingService.addBook(addedbook, email, pagesRead,startDate);
+        return "redirect:/Discover/" +email;
 
     }
+
+    
 
 
 

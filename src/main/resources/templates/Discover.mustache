@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
   <link rel="stylesheet" href="/Css/Discover.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
   <style>
@@ -152,7 +153,7 @@
 
             <!-- Hover Button Icons with Titles -->
             <div class="hover-buttons">
-                <button class="ui icon button" title="Currently Reading">
+                <button class="ui icon button" onclick="currentlyReading({{{id}}})" title="Currently Reading">
                     <i class="book icon"></i>
                 </button>
                 <button class="ui icon button" onclick="bookToRead({{id}})" title="Want to Read">
@@ -208,6 +209,24 @@
                 <input type="password" placeholder="Create a password">
             </div>
             <button class="ui small button" id="signup-submit" style="background-color: #d1bfa7 !important; color: #3a2e1f !important;">Signup</button>
+        </form>
+    </div>
+</div>
+
+<!--currently reading -->
+<div class="ui modal" id="currently-reading-modal">
+    <div class="header">Add to Currently Reading</div>
+    <div class="content">
+        <form id="currently-reading-form" class="ui form" method="post" >
+            <div class="field">
+                <label for="startDate">Start Date</label>
+                <input type="date" name="startDate" placeholder="Enter your reading start date">
+            </div>
+            <div class="field">
+                <label for="pagesRead">Pages Read</label>
+                <input type="number" name="pagesRead" placeholder="Enter how many pages you've read">
+            </div>
+            <button class="ui button primary" type="submit">Submit</button>
         </form>
     </div>
 </div>
@@ -273,6 +292,15 @@
         fetch(`/{{email}}/${id}/ToRead`, {
             method: 'POST'
         })}
+
+    function currentlyReading(id){
+        // creating a dynamic url, we need this because we cant define the url directly in the form as the id and email will constantly change
+        const formAction = `/{{email}}/${id}/CurrentlyReading`;
+        // setting the forms action attribute to the dynamic url
+        $("#currently-reading-form").attr("action", formAction);
+        $("#currently-reading-modal").modal("show");
+    }
+
 
     $(document).ready(function() {
 
