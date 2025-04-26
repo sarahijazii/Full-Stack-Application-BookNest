@@ -12,6 +12,7 @@ public interface AlreadyReadRepository extends JpaRepository<AlreadyRead,Integer
 
     public List<AlreadyRead> findAllByEmail(String email);
     public List<AlreadyRead> findReviewsByEmail(String email);
-   ;
+    List<AlreadyRead> findAllByEmailOrderByRatingDesc(String email);
+
 
 }

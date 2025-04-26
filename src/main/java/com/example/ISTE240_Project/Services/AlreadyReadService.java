@@ -46,17 +46,33 @@ public class AlreadyReadService {
         return alreadyReadRepository.findReviewsByEmail(email);
     }
 
-    public List<AlreadyRead> getAllBooksSortedByRating() {
-        Iterable<AlreadyRead> topbooks = alreadyReadRepository.findAll(Sort.by(Sort.Direction.DESC, "rating"));
-        List<AlreadyRead> topbookslist = new ArrayList<>();
+    public List<AlreadyRead> getAllBooksSortedByRating(String email) {
+        List<AlreadyRead> topbooks = alreadyReadRepository.findAllByEmailOrderByRatingDesc(email);
         List<AlreadyRead> favoritebooks = new ArrayList<>();
-        for (AlreadyRead book : topbooks){
-            topbookslist.add(book);
-        }
         for (int a =0; a<5; a++){
-            favoritebooks.add(topbookslist.get(a));
+            if (a<topbooks.size()){
+                favoritebooks.add(topbooks.get(a));
+            }
         }
-
         return favoritebooks;
+    }
+
+    public double getUserAverageRating(String email) {
+        double sum =0;
+        int books =0;
+        List<AlreadyRead> allBooks = alreadyReadRepository.findAllByEmail(email);
+        for (AlreadyRead book : allBooks) {
+            sum = sum + book.getRating();
+            books++;
+        }
+        double result = sum/books;
+
+        // Use math round to format the average rating nicely, it functions by rounding to the nearest
+        // whole number. So it multiples by hundred, rounds, then divides by a hundred again to get the
+        // correct nicely formatted decimal placement
+
+        return Math.round(result * 100.0) / 100.0;
+
+
     }
 }
