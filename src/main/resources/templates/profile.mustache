@@ -71,7 +71,7 @@
             <div class="right menu">
 
                 <div class="item">
-                    <button class="ui small button" id="signout-btn">Sign out </button>
+                    <button  class="ui small button" id="signout-btn"> <a href="/joinbooknest"> Sign out </a> </button>
 
                 </div>
 
@@ -246,12 +246,27 @@
                 <div class="eight wide column">
                     <h4 class="ui inverted header">Newsletter</h4>
                     <p>Subscribe for updates on new book releases.</p>
-                    <div class="ui action input">
-                        <input type="email" placeholder="Your email...">
-                        <button class="ui button">Subscribe</button>
+
+
+                        <form action="/subscribe/{{email}}" method="post" class="ui action input" style="width: 100%;">
+                            <input type="email" name="newsletteremail" placeholder="Your email..." required>
+                            <button class="ui button" type="submit">Subscribe</button>
+                        </form>
                     </div>
+            </div>
+
+            <!-- Modal for Subscription Feedback -->
+            <div class="ui modal" id="subscription-modal">
+                <div class="header" id="modal-header">Subscription</div>
+                <div class="content">
+                    <p id="modal-message">Thanks for subscribing!</p>
+                </div>
+                <div class="actions">
+                    <div class="ui approve button">OK</div>
                 </div>
             </div>
+
+
             <div class="ui center aligned container" style="padding-top: 20px;">
                 <p>&#xa9; 2025 BookNest. All rights reserved.</p>
             </div>
@@ -282,6 +297,21 @@
 
         $('.ui.progress').progress({
         });
+
+        const subscribed = '{{#subscribed}}true{{/subscribed}}';
+        const subscribeFailed = '{{#subscribeFailed}}true{{/subscribeFailed}}';
+
+        if (subscribed === 'true') {
+            $('#modal-header').text("You're Subscribed!");
+            $('#modal-message').text("Thanks for subscribing to BookNest 🎉");
+            $('#subscription-modal').modal('show');
+        }
+
+        if (subscribeFailed === 'true') {
+            $('#modal-header').text("Already Subscribed");
+            $('#modal-message').text("You're already on our list 😊 No need to subscribe again.");
+            $('#subscription-modal').modal('show');
+        }
 
     });
     function currentlyReading(id){

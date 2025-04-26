@@ -102,8 +102,7 @@
 
     <div class="right menu">
         <div class="item">
-            <button class="ui small button" id="login-btn">Login</button>
-            <button class="ui small primary button" id="signup-btn">Signup</button>
+            <button  class="ui small button" id="signout-btn"> <a href="/joinbooknest"> Sign out </a> </button>
         </div>
     </div>
 </div>
@@ -281,8 +280,8 @@
                 <h4 class="ui inverted header">Newsletter</h4>
                 <p>Subscribe for updates on new book releases.</p>
 
-                <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
-                    <input type="email" name="email" placeholder="Your email..." required>
+                <form action="/subscribe/{{email}}" method="post" class="ui action input" style="width: 100%;">
+                    <input type="email" name="newsletteremail" placeholder="Your email..." required>
                     <button class="ui button" type="submit">Subscribe</button>
                 </form>
             </div>

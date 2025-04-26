@@ -60,8 +60,8 @@
                     <h4 class="ui inverted" style="color: white">Newsletter</h4>
                     <p style="color: white">Subscribe for updates on new book releases.</p>
 
-                    <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
-                        <input type="email" name="email" placeholder="Your email..." required>
+                    <form action="/subscribe/{{email}}" method="post" class="ui action input" style="width: 100%;">
+                        <input type="email" name="newsletteremail" placeholder="Your email..." required>
                         <button class="ui button" type="submit">Subscribe</button>
                     </form>
                 </div>

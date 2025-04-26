@@ -14,14 +14,13 @@
         <img src="/images/logo.png" alt="Logo" class="ui centered image logo">
         <a href="/home/{{email}}" class="item">Home</a>
         <a href="/Discover/{{email}}" class="item">Discover</a>
-        <a href="/nobel-prize" class="item">Nobel Prize</a>
+        <a href="/nobel/{{email}}" class="item">Nobel Prize</a>
         <a href="/profile/{{email}}" class="item">Profile</a>
         <a href="/faqs.html" class="item">FAQs</a>
 
         <!--LOGIN/SIGN-UP BUTTONS-->
         <div class="btn-container">
-            <button class="ui button primary login-btn" style="font-family: 'Arial', sans-serif">Login</button>
-            <button class="ui button secondary signup-btn" style="font-family: 'Arial', sans-serif">Signup</button>
+            <button  class="ui button primary signout-btn" id="signout-btn"> <a href="/joinbooknest"> Sign out </a> </button>
         </div>
     </div>
 
@@ -102,8 +101,8 @@
                         <h4 class="ui inverted">Newsletter</h4>
                         <p style="color: #5a3e36">Subscribe for updates on new book releases.</p>
 
-                        <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
-                            <input type="email" name="email" placeholder="Your email..." required>
+                        <form action="/subscribe/{{email}}" method="post" class="ui action input" style="width: 100%;">
+                            <input type="email" name="newsletteremail" placeholder="Your email..." required>
                             <button class="ui button" type="submit">Subscribe</button>
                         </form>
                     </div>

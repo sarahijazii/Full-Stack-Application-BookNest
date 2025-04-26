@@ -27,6 +27,10 @@ body{
     padding: 8px 14px;
 }
 
+.ui.button a{
+    color: #3a2e1f;
+}
+
 .right.menu{
     display: flex;
     align-items: center;

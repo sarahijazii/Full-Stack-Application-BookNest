@@ -292,7 +292,7 @@
     <footer class="ui inverted vertical segment footer">
         <div class="ui container">
             <div class="ui stackable divided equal height stackable grid">
-                <div class="four wide column">
+                <div class="eight wide column">
                     <h4 class="ui inverted">Connect With Us</h4>
                     <div class="ui inverted link list">
                         <a href="#" class="item"><i class="facebook icon"></i> Facebook</a>
@@ -300,21 +300,14 @@
                         <a href="#" class="item"><i class="instagram icon"></i> Instagram</a>
                     </div>
                 </div>
-                <div class="four wide column">
+                <div class="eight wide column">
                     <h4 class="ui inverted">Contact Us</h4>
                     <p>Email: booknest@gmail.com</p>
                     <p>Phone: +123 456 7890</p>
                 </div>
-                <div class="eight wide column">
-                    <h4 class="ui inverted">Newsletter</h4>
-                    <p>Subscribe for updates on new book releases.</p>
-                    <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
-                        <input type="email" name="email" placeholder="Your email..." required style="background: #f4f1ea; color: #5a3e36; border: 1px solid #8a6353; border-radius: 5px; padding: 10px;">
-                        <button class="ui button" type="submit" style="background-color: #d3d3d3; color: #333;">Subscribe</button>
-                    </form>
-                </div>
+
             </div>
-            <div class="ui center aligned container">
+            <div class="ui center aligned container" style="padding-top: 20px;">
                 <p>© 2025 BookNest. All rights reserved.</p>
             </div>
         </div>
@@ -343,7 +336,7 @@
 
         let loggedin = {{status}}
         if (loggedin === false){
-            alert("Error logging in: Incorrect Password. Try again")
+            alert("Create an account or login with the correct credentials to explore BookNest!")
         }
 
         $("#signup-btn").click(function() {

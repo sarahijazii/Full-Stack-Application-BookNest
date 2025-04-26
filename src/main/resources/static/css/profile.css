@@ -44,6 +44,11 @@ body{
 .ui.button{
     font-size: 1rem;
     padding: 8px 14px;
+
+}
+
+.ui.button a{
+    color: #3a2e1f;
 }
 
 .right.menu{
@@ -53,8 +58,6 @@ body{
     flex-shrink: 0;
 
 }
-
-
 
 .right.menu .ui.input {
     flex-grow: 1;
@@ -233,11 +236,11 @@ body{
 
 /** footer **/
 
-
+/* footer styling */
 footer .four.wide.column{
     background-color: #553e37;
-
 }
+
 .footer {
     background-color: #553e37;
     color:  white;
@@ -266,6 +269,5 @@ footer .four.wide.column{
 .footer .ui.center.aligned.container p {
     margin-top: 30px;
     font-size: 1rem;
-
 }
 

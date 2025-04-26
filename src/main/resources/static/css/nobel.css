@@ -57,10 +57,10 @@ body {
     display: flex;
     width: 100%;
     margin-top: 20px;
+    justify-content: center;
 }
 
-.btn-container button.ui.button.primary.login-btn,
-.btn-container button.ui.button.secondary.signup-btn {
+.btn-container button.ui.button.primary.signout-btn{
     width: 50%;
     padding: 10px;
     font-size: 16px;
@@ -68,24 +68,18 @@ body {
     border-radius: 5px;
     cursor: pointer; /* The cursor will change to a pointer when the user hovers over */
     transition: all 0.3s ease;
-}
-
-.btn-container button.ui.button.primary.login-btn {
     background-color: #d3d3d3;
     color: #333;
 }
 
-.btn-container button.ui.button.secondary.signup-btn {
-    background-color: #5a3e36;
-    color: white;
-}
-
-.btn-container button.ui.button.primary.login-btn:hover{
+.btn-container button.ui.button.primary.signout-btn:hover{
     background-color: darkgray;
 }
-.btn-container button.ui.button.secondary.signup-btn:hover {
-    background-color: #7f5737;
+
+.btn-container button.ui.button.primary.signout-btn a{
+    color: #3a2e1f;
 }
+
 
 /*------------------ HEADER IMAGE AND CONTENT ------------------*/
 .ui.header {
