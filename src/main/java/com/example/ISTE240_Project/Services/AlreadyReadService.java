@@ -22,6 +22,7 @@ public class AlreadyReadService {
     @Autowired
     private CurrentlyReadingService currentlyReadingService;
 
+
     public void addBook(Book book, String email, LocalDate startDate, LocalDate endDate, String review, int rating) {
         AlreadyRead alreadyRead = new AlreadyRead();
         alreadyRead.setIsbn(book.getIsbn());
@@ -91,5 +92,41 @@ public class AlreadyReadService {
         }
 
         return sum;
+    }
+
+    public List<AlreadyRead> getByGenre(String email,String genre) {
+        return alreadyReadRepository.findByEmailAndGenreIgnoreCase(email,genre);
+    }
+
+    public String getUserFavouriteGenre(String email) {
+        int romancecount = getByGenre(email,"romance").size();
+        int scificount = getByGenre(email,"sci-fi").size();
+        int nonfictioncount = getByGenre(email,"nonfiction").size();
+        int biographycount = getByGenre(email,"biography").size();
+        int fantasycount = getByGenre(email,"fantasy").size();
+        int horrorcount = getByGenre(email,"horror").size();
+        int mysterycount = getByGenre(email,"mystery").size();
+        int thrillercount = getByGenre(email,"thriller").size();
+        if (romancecount > scificount && romancecount > nonfictioncount && romancecount > biographycount && romancecount > fantasycount && romancecount > horrorcount && romancecount > mysterycount && romancecount > thrillercount) {
+            return "Romance";
+        } else if (scificount > romancecount && scificount > nonfictioncount && scificount > biographycount && scificount > fantasycount && scificount > horrorcount && scificount > mysterycount && scificount > thrillercount) {
+            return "Sci-Fi";
+        } else if (nonfictioncount > romancecount && nonfictioncount > scificount && nonfictioncount > biographycount && nonfictioncount > fantasycount && nonfictioncount > horrorcount && nonfictioncount > mysterycount && nonfictioncount > thrillercount) {
+            return "Nonfiction";
+        } else if (biographycount > romancecount && biographycount > scificount && biographycount > nonfictioncount && biographycount > fantasycount && biographycount > horrorcount && biographycount > mysterycount && biographycount > thrillercount) {
+            return "Biography";
+        } else if (fantasycount > romancecount && fantasycount > scificount && fantasycount > nonfictioncount && fantasycount > biographycount && fantasycount > horrorcount && fantasycount > mysterycount && fantasycount > thrillercount) {
+            return "Fantasy";
+        } else if (horrorcount > romancecount && horrorcount > scificount && horrorcount > nonfictioncount && horrorcount > biographycount && horrorcount > fantasycount && horrorcount > mysterycount && horrorcount > thrillercount) {
+            return "Horror";
+        } else if (mysterycount > romancecount && mysterycount > scificount && mysterycount > nonfictioncount && mysterycount > biographycount && mysterycount > fantasycount && mysterycount > horrorcount && mysterycount > thrillercount) {
+            return "Mystery";
+        } else if (thrillercount > romancecount && thrillercount > scificount && thrillercount > nonfictioncount && thrillercount > biographycount && thrillercount > fantasycount && thrillercount > horrorcount && thrillercount > mysterycount) {
+            return "Thriller";
+        } else {
+            return "In Discovery!"; // if all counts are 0 or equal
+        }
+
+
     }
 }

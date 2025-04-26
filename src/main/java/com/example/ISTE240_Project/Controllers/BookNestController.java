@@ -182,6 +182,7 @@ public class BookNestController {
         model.addAttribute("favoritebooks",favoritebooks);
         model.addAttribute("avgrating",alreadyReadService.getUserAverageRating(email));
         model.addAttribute("pagesread",alreadyReadService.getUserPagesRead(email));
+        model.addAttribute("romancecount",alreadyReadService.getUserFavouriteGenre(email));
         if (user.getImage() != null && user.getImage().length > 0) {
             String base64Image = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(user.getImage());
             model.addAttribute("image", base64Image);
