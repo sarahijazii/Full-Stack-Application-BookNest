@@ -5,9 +5,11 @@ import com.example.ISTE240_Project.Models.AlreadyRead;
 import com.example.ISTE240_Project.Models.Book;
 import com.example.ISTE240_Project.modelsDAO.AlreadyReadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -44,8 +46,17 @@ public class AlreadyReadService {
         return alreadyReadRepository.findReviewsByEmail(email);
     }
 
-//    public List<AlreadyRead> findFavoritesByEmail(String email) {
-//        List<AlreadyRead> books = alreadyReadRepository.findAllByEmail(email);
-//        books.sort(rating);
-//    }
+    public List<AlreadyRead> getAllBooksSortedByRating() {
+        Iterable<AlreadyRead> topbooks = alreadyReadRepository.findAll(Sort.by(Sort.Direction.DESC, "rating"));
+        List<AlreadyRead> topbookslist = new ArrayList<>();
+        List<AlreadyRead> favoritebooks = new ArrayList<>();
+        for (AlreadyRead book : topbooks){
+            topbookslist.add(book);
+        }
+        for (int a =0; a<5; a++){
+            favoritebooks.add(topbookslist.get(a));
+        }
+
+        return favoritebooks;
+    }
 }

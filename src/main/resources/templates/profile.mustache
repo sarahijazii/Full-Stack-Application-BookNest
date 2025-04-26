@@ -77,11 +77,10 @@
     <div class="three wide column">
         <div>
             <h4 class="ui header" style="margin-bottom:25px;margin-top:10px;color:#42322d"> {{displayname}}'s Favorites </h4>
-            <div class="book"> <img src="/images/book-cover-placeholder.png" alt="book-cover"> <p> Book Title </p> </div>
-            <div class="book"> <img src="/images/book-cover-placeholder.png" alt="book-cover"> <p> Book Title </p> </div>
-            <div class="book"> <img src="/images/book-cover-placeholder.png" alt="book-cover"> <p> Book Title </p> </div>
-            <div class="book"> <img src="/images/book-cover-placeholder.png" alt="book-cover"> <p> Book Title </p> </div>
+            {{#favoritebooks}}
+            <div class="book"> <img src={{thumbnailUrl}} alt="book-cover"> <p> {{title}} </p> </div>
 
+            {{/favoritebooks}}
         </div>
     </div>
 
@@ -170,8 +169,6 @@
             <div class="profile-container">
 
                 <img class="ui medium circular image" src="{{#image}}{{image}}{{/image}}{{^image}}/images/square-image.jpg{{/image}}">
-
-
 
             </div>
 

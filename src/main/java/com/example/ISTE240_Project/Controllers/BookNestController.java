@@ -170,6 +170,7 @@ public class BookNestController {
         List<WantToRead> toReadBooks = wantToReadService.findBooksByEmail(email);
         List<CurrentlyReading> currentlyReading = currentlyReadingService.findBooksByEmail(email);
         List<AlreadyRead> reviews = alreadyReadService.findReviewsByEmail(email);
+        List<AlreadyRead> favoritebooks = alreadyReadService.getAllBooksSortedByRating();
         model.addAttribute("displayname",user.getDisplayName());
         model.addAttribute("bio",user.getBio());
         model.addAttribute("alreadyread",readBooks);
@@ -178,6 +179,7 @@ public class BookNestController {
         model.addAttribute("reviews",reviews);
         model.addAttribute("username",user.getUsername());
         model.addAttribute("numberofbooksread",readBooks.size());
+        model.addAttribute("favoritebooks",favoritebooks);
         if (user.getImage() != null && user.getImage().length > 0) {
             String base64Image = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(user.getImage());
             model.addAttribute("image", base64Image);
