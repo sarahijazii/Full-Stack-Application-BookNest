@@ -31,6 +31,17 @@
             margin-top: -14px;
         }
 
+        .piechart {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-image: conic-gradient(
+                    #5a3e36 70deg,
+                    #826158 0 235deg,
+                    #c1a49c 0
+            );
+        }
+
 
     </style>
 
@@ -184,12 +195,16 @@
                 <div>
                     <h4 class="ui header" >  Favorite Genre  </h4>
                 <p> Romance </p>
-                <div class="piechart"></div>
+
                 </div>
 
                 <div>
                     <h4 class="ui header" >  Average Rating </h4>
                 <p> {{avgrating}} </p>
+                </div>
+                <div>
+                    <h4 class="ui header" >  Pages Read </h4>
+                    <p> {{pagesread}} pages </p>
                 </div>
 
 

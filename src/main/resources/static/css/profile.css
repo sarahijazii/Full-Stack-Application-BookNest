@@ -112,16 +112,7 @@ body{
 
 }
 
-.piechart {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-image: conic-gradient(
-            #5a3e36 70deg,
-            #826158 0 235deg,
-            #c1a49c 0
-    );
-}
+
 
 
 

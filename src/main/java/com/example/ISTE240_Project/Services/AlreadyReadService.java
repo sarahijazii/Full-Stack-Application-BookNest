@@ -3,6 +3,7 @@ package com.example.ISTE240_Project.Services;
 
 import com.example.ISTE240_Project.Models.AlreadyRead;
 import com.example.ISTE240_Project.Models.Book;
+import com.example.ISTE240_Project.Models.CurrentlyReading;
 import com.example.ISTE240_Project.modelsDAO.AlreadyReadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -17,6 +18,9 @@ public class AlreadyReadService {
 
     @Autowired
     private AlreadyReadRepository alreadyReadRepository;
+
+    @Autowired
+    private CurrentlyReadingService currentlyReadingService;
 
     public void addBook(Book book, String email, LocalDate startDate, LocalDate endDate, String review, int rating) {
         AlreadyRead alreadyRead = new AlreadyRead();
@@ -73,6 +77,19 @@ public class AlreadyReadService {
 
         return Math.round(result * 100.0) / 100.0;
 
+    }
 
+    public int getUserPagesRead(String email) {
+        List<AlreadyRead> allBooks = alreadyReadRepository.findAllByEmail(email);
+        List<CurrentlyReading> currentlyReading = currentlyReadingService.findBooksByEmail(email);
+        int sum = 0;
+        for (AlreadyRead book : allBooks) {
+            sum = sum + book.getPageCount();
+        }
+        for (CurrentlyReading book : currentlyReading) {
+            sum = sum + book.getPagesRead();
+        }
+
+        return sum;
     }
 }
