@@ -17,9 +17,10 @@ public class UserService {
     private UserRepository userRepository;
 
     @Transactional
-    public void addUser(User user){
+    public void addUser(User user) {
         userRepository.save(user);
     }
+
 
     public List<User> getUsers(){
         return userRepository.findAll();

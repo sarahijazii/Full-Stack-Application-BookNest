@@ -70,19 +70,15 @@ public class BookNestController {
 
     @PostMapping("/joinbooknest/signup")
     public String signup(User user, Model model, @RequestParam("profilepicture") MultipartFile profilePicture) throws IOException {
-        user.setImage(profilePicture.getBytes());
-        userService.addUser(user);
-        model.addAttribute("displayname",user.getDisplayName());
-        model.addAttribute("bio",user.getBio());
-        if (user.getImage() != null && user.getImage().length > 0) {
-            String base64Image = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(user.getImage());
-            model.addAttribute("image", base64Image);
+        if (userService.findUserByEmail(user.getEmail()) != null) {
+            model.addAttribute("status",false);
+            return "Login_Signup";
         }
-        else{
-            model.addAttribute("image",null);
+        else {
+            user.setImage(profilePicture.getBytes());
+            userService.addUser(user);
+            return "redirect:/home/" + user.getEmail();
         }
-        return "redirect:/home/"+ user.getEmail();
-
     }
 
     @PostMapping("/joinbooknest/login")
