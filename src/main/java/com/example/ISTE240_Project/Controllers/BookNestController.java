@@ -67,38 +67,41 @@ public class BookNestController {
         this.authorService=authorService;
     }
 
+    /* Handles requests to Login/SignUp page */
     @GetMapping("/joinbooknest")
     public String joinBookNest(Model model) {
-        model.addAttribute("status",false);
+        model.addAttribute("status",false); /* LoggedIn is set to false initially */
         return "Login_Signup";
     }
 
+    /* Handles account creation in Login/SignUp page. Is attached to Sign Up button */ 
     @PostMapping("/joinbooknest/signup")
     public String signup(User user, Model model, @RequestParam("profilepicture") MultipartFile profilePicture) throws IOException {
-        if (userService.findUserByEmail(user.getEmail()) != null) {
-            model.addAttribute("status",false);
+        if (userService.findUserByEmail(user.getEmail()) != null) 
+            model.addAttribute("status",false); /* If account with email exists, set LoggedIn to false and dont create the account */ 
             return "Login_Signup";
         }
-        else {
-            user.setImage(profilePicture.getBytes());
-            userService.addUser(user);
-            return "redirect:/home/" + user.getEmail();
+        else { /* Otherwise, create the account successfully. */
+            user.setImage(profilePicture.getBytes());   /* Profile picture is provided intially as a MultipartFile from the html form. So transform it to bytes and add it to the user */
+            userService.addUser(user); 
+            return "redirect:/home/" + user.getEmail(); /* After account creation, redirect to home page */
         }
     }
 
+    /* Handles account login in Login/SignUp page. Is attached to Login button */
     @PostMapping("/joinbooknest/login")
     public String login( @RequestParam String password, @RequestParam String email, Model model){
         var user = userService.findUserByEmail(email);
-        if (password.equals(user.getPassword())){
-            return "redirect:/home/" + email;
+        if (password.equals(user.getPassword())){ /* Checks database to see if the provided password is the same as the stored one */
+            return "redirect:/home/" + email; /* If it is, redirect to home */
         }
         else{
-            model.addAttribute("status", false);
+            model.addAttribute("status", false); /* If not, set LoggedIn to false and reload the page */
             return "Login_Signup";
         }
-
-
     }
+
+    /* Handles requests to home page */ 
     @GetMapping("/home/{email}")
     public String getHome(Model model, @PathVariable String email) {
         // Fetch upcoming releases
@@ -120,6 +123,7 @@ public class BookNestController {
         return "home";
     }
 
+    /* Handles newsletter subscription */
     @PostMapping("/subscribe/{email}")
     public String subscribe(@PathVariable String email, @RequestParam String newsletteremail, Model model, RedirectAttributes redirectAttributes) {
         boolean alreadySubscribed = newsletterService.existsByEmail(newsletteremail);
@@ -135,6 +139,7 @@ public class BookNestController {
         return "redirect:/home/" + email;
     }
 
+    /* Displays book-details page when clicking on a book in the home page */
     @GetMapping("/book/{email}/{id}")
     public String getBookDetails(@PathVariable String email, @PathVariable int id, Model model) {
         Book book = bookService.getBookById(id);
@@ -144,9 +149,11 @@ public class BookNestController {
         }
 
         model.addAttribute("book", book);
+        model.addAttribute("isbn", book.getIsbn());
         return "book-details";
     }
 
+    /* Handles requests to discover page */
     @GetMapping("/Discover/{email}")
     public String getSearch(@PathVariable String email, Model model) {
         List<Book> allBooks = bookService.getAllBooks();
@@ -155,6 +162,7 @@ public class BookNestController {
         return "Discover";
     }
 
+    /* Handles requests to a certain genre on the discover page */
     @GetMapping("/Discover/{email}/{genre}")
     public String getBooksByGenre(@PathVariable String email, @PathVariable("genre") String genre, Model model) {
         List<Book> books = bookService.getByGenre(genre);
@@ -164,6 +172,7 @@ public class BookNestController {
         return "Discover";
     }
 
+    /* Handles requests to profile page */
     @GetMapping("/profile/{email}")
     public String getProfile(Model model, @PathVariable String email){
         var user = userService.findUserByEmail(email);
@@ -184,9 +193,11 @@ public class BookNestController {
         model.addAttribute("avgrating",alreadyReadService.getUserAverageRating(email));
         model.addAttribute("pagesread",alreadyReadService.getUserPagesRead(email));
         model.addAttribute("romancecount",alreadyReadService.getUserFavouriteGenre(email));
-        if (user.getImage() != null && user.getImage().length > 0) {
-            String base64Image = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(user.getImage());
-            model.addAttribute("image", base64Image);
+        if (user.getImage() != null && user.getImage().length > 0) { /* Checks if the image bytes is not null and the file isnt empty */
+            String profilepic = "data:image/jpeg;base64," + Base64.getEncoder().encodeToString(user.getImage()); 
+            /* Gets image bytes and transforms it into a base64Image string that can be embedded in the page, combined with a 
+                Data URI prefix that informs the browsers its an jpeg image that is base64 encoded */
+            model.addAttribute("image", profilepic);
         }
         else{
             model.addAttribute("image",null);
@@ -232,12 +243,15 @@ public class BookNestController {
     }
 
 
+    /* Attached to WantToRead button on discover page, adds book to the database through its id */
     @PostMapping("/{email}/{id}/ToRead")
     public void toReadBook(@PathVariable String email,@PathVariable int id){
         Book addedbook = bookService.getBookById(id);
         wantToReadService.addBook(addedbook, email);
     }
 
+
+    /* Attached to CurrentlyReading form on discover page, adds book to the database */
     @PostMapping("/{email}/{id}/CurrentlyReading")
     public String currentlyReadBook(@RequestParam int pagesRead, @RequestParam LocalDate startDate, @PathVariable String email, @PathVariable int id) {
         Book addedbook = bookService.getBookById(id);
@@ -246,12 +260,14 @@ public class BookNestController {
 
     }
 
+    /* Attached to update button on profile page, updates the pages read in currently reading database */
     @PostMapping("/{email}/{id}/UpdateCurrentlyReading")
     public String updateCurrentlyReading(@PathVariable String email,@PathVariable int id,@RequestParam int pagesRead){
         currentlyReadingService.updateBook(id,pagesRead);
         return "redirect:/profile/" + email;
     }
 
+     /* Attached to AlreadyRead form on discover page, adds book to the database */
     @PostMapping("/{email}/{id}/AlreadyRead")
     public String alreadyReadBook(@RequestParam LocalDate startDate, @RequestParam LocalDate endDate, @RequestParam String review, @RequestParam int rating, @PathVariable String email,@PathVariable int id){
         Book addedbook = bookService.getBookById(id);
