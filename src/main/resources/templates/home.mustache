@@ -22,19 +22,21 @@
 
 
 <body>
+<!--navigation menu-->
 <div class="ui menu">
-
     <div class="ui container">
+
+        <!--mobile menu icon-->
         <div class="mobile-menu-icon">
             <i class="bars icon" id="mobile-menu-toggle"></i>
         </div>
 
-
+        <!-- Logo -->
         <div class ="nav-logo-container">
             <img src="/images/logo-beige.png" alt="BookNest Logo" class="nav-logo">
         </div>
 
-
+        <!-- navigation links   -->
         <div class="menu-items">
             <a href="home" class="item">Home</a>
             <a href="discover" class="item">Discover</a>
@@ -43,6 +45,7 @@
             <a href="/faqs.html" class="item">FAQs</a>
         </div>
 
+        <!--  login and signup buttons      -->
         <div class="right menu">
             <div class="item">
                 <button class="ui small button" id="login-btn">Login</button>
@@ -54,7 +57,7 @@
 
 
 
-
+<!--Banner image -->
 <div class="banner-image">
     <img src="/images/home-image.jpg" alt="BookNest Banner">
 </div>
@@ -73,12 +76,13 @@
     </div>
 </div>
 
-
+<!--main content container-->
 <div class="ui container">
     <div class="ui stackable grid">
         <div class="row" style="align-items: stretch;">
             <div class="twelve wide column">
 
+                <!--Section: All Books-->
                 <div class="book-section">
                     <h2>All Books</h2>
                     <div class="book-list">
@@ -93,7 +97,7 @@
                         {{/allBooks}}
                     </div>
                 </div>
-
+                <!--Section: Thrillers -->
                 <div class="book-section">
                     <h2>Thrillers You Must Read</h2>
                     <div class="book-list">
@@ -108,7 +112,7 @@
                         {{/thrillers}}
                     </div>
                 </div>
-
+                <!--Section: New Releases -->
                 <div class="book-section">
                     <h2>New Releases This Year</h2>
                     <div class="book-list">
@@ -124,6 +128,7 @@
                     </div>
                 </div>
 
+                <!-- Section: 20th Century Books -->
                 <div class="book-section">
                     <h2>Best Books of the 20th Century</h2>
                     <div class="book-list">
@@ -139,6 +144,7 @@
                     </div>
                 </div>
 
+                <!-- Section: Best Memoirs -->
                 <div class="book-section">
                     <h2>Best Memoir/Biography</h2>
                     <div class="book-list">
@@ -155,7 +161,7 @@
                 </div>
             </div>
 
-
+            <!-- Sidebar Section -->
             <div class="four wide column sidebar">
                 <h3 class="ui header">Fun Facts About Books & Authors</h3>
                 <p>{{funFact.fact}}</p>
@@ -191,7 +197,7 @@
 
 
 
-<!--login -->
+<!--login modal-->
 <div class="ui modal" id="login-modal">
     <div class="header">Login</div>
     <div class="content">
@@ -235,6 +241,7 @@
 <footer class="ui inverted  footer sixteen wide column">
     <div class="ui container" style="padding-top: 50px">
         <div class="ui stackable divided equal height stackable grid">
+            <!--connect links-->
             <div class="four wide column">
                 <h4 class="ui inverted header">Connect With Us</h4>
                 <div class="ui  inverted link list">
@@ -243,13 +250,14 @@
                     <a href="#" class="item"><i class="instagram icon"></i> Instagram</a>
                 </div>
             </div>
+            <!-- Contact Information -->
             <div class="four wide column">
                 <h4 class="ui inverted header">Contact Us</h4>
                 <p>Email: booknest@gmail.com</p>
                 <p>Phone: +123 456 7890</p>
             </div>
 
-
+            <!-- Newsletter Subscription -->
             <div class="eight wide column">
                 <h4 class="ui inverted header">Newsletter</h4>
                 <p>Subscribe for updates on new book releases.</p>
@@ -270,9 +278,9 @@
                     <div class="ui approve button">OK</div>
                 </div>
             </div>
-
-
         </div>
+
+        <!-- Copyright -->
         <div class="ui center aligned container" style="padding-top: 20px;">
             <p>&#xa9; 2025 BookNest. All rights reserved.</p>
         </div>
@@ -280,31 +288,26 @@
 
 
 
-
 </footer>
-
-
-<!-- javascript -->
+<!-- JavaScript for Modals and Menu -->
 <script>
     $(document).ready(function() {
+        // Open login modal
         $("#login-btn").click(function() {
             $("#login-modal").modal("show");
         });
 
-
-
-
+        // Open signup modal
         $("#signup-btn").click(function() {
             $("#signup-modal").modal("show");
         });
 
-
-
-
+        // Toggle mobile menu
         $("#mobile-menu-toggle").click(function() {
             $(".menu-items").toggleClass("active");
         });
 
+        // Show subscription feedback
         const subscribed = '{{#subscribed}}true{{/subscribed}}';
         const subscribeFailed = '{{#subscribeFailed}}true{{/subscribeFailed}}';
 
@@ -320,17 +323,10 @@
             $('#subscription-modal').modal('show');
         }
 
-
-
-
     });
-
 
 </script>
 
-
 </body>
 
-
 </html>
-
