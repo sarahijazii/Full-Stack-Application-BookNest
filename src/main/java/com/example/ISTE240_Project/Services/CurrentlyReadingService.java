@@ -19,6 +19,7 @@ public class CurrentlyReadingService {
 
 
 
+    @Transactional 
     public void addBook(Book book, String email, int pagesRead, LocalDate startDate){
         CurrentlyReading currentlyReading = new CurrentlyReading();
         currentlyReading.setIsbn(book.getIsbn());
@@ -40,7 +41,7 @@ public class CurrentlyReadingService {
     }
 
     @Transactional
-    public void updateBook(int id, int pagesRead){
+    public void updateBook(int id, int pagesRead){ /* Updates the amount of pages read and the progress bar */
         currentlyReadingRepository.findById(id).ifPresent(currentlyReading -> {
             currentlyReading.setPagesRead(pagesRead);
             int percent = (int)(((double) pagesRead / currentlyReading.getPageCount()) * 100);
