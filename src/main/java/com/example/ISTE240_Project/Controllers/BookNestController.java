@@ -77,7 +77,7 @@ public class BookNestController {
     /* Handles account creation in Login/SignUp page. Is attached to Sign Up button */ 
     @PostMapping("/joinbooknest/signup")
     public String signup(User user, Model model, @RequestParam("profilepicture") MultipartFile profilePicture) throws IOException {
-        if (userService.findUserByEmail(user.getEmail()) != null) 
+        if (userService.findUserByEmail(user.getEmail()) != null) {
             model.addAttribute("status",false); /* If account with email exists, set LoggedIn to false and dont create the account */ 
             return "Login_Signup";
         }
