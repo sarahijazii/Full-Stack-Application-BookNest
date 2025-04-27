@@ -266,7 +266,7 @@
         });
 
         $('.ui.progress').progress({
-        });
+        }); // initializes an actual working progress bar where the class ui progress appears 
 
         const subscribed = '{{#subscribed}}true{{/subscribed}}';
         const subscribeFailed = '{{#subscribeFailed}}true{{/subscribeFailed}}';
@@ -284,6 +284,7 @@
         }
 
     });
+// to update currently reading progress
     function currentlyReading(id){
         // creating a dynamic url, we need this because we cant define the url directly in the form as the id and email will constantly change
         const formAction = `/${userEmail}/${id}/UpdateCurrentlyReading`;
