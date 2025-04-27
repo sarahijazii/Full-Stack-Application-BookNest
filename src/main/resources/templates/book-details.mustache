@@ -98,7 +98,8 @@
 <body>
 
 <div class="book-container">
-    <img class="book-cover" src="{{book.thumbnailUrl}}" alt="Book Cover">
+    <img class="book-cover" src="{{book.thumbnailUrl}}" alt="Book Cover" onerror="this.onerror=null;
+                                             this.src='https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg';">
 
     <div class="info-section">
         <h1>{{book.title}}</h1>
