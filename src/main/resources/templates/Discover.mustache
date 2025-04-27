@@ -349,8 +349,8 @@
     // we place it outside because the onclick attribute cant reach it otherwise as it wont be global
     function bookToRead(id) {
         // connecting the post method to the button
-        fetch(`/{{email}}/${id}/ToRead`, {
-            method: 'POST'
+        fetch(`/{{email}}/${id}/ToRead`, { // Makes a HTTP request to the server for this path when the button is clicked 
+            method: 'POST' // States that its a POST method to the server
         })}
 
     function currentlyReading(id){
