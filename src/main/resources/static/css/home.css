@@ -1,8 +1,10 @@
+/* page background and font */
 body {
     background-color: #f4f1ea;
     font-family: 'Georgia', serif;
 }
 
+/* navbar styling */
 .ui.menu {
     background-color: #5a3e36;
     color: white;
@@ -64,7 +66,7 @@ body {
 }
 
 
-/*book card styling*/
+/*book card styling & hover effect*/
 .book-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -125,7 +127,7 @@ blockquote::before {
     color: #3a2e1f;
 }
 
-
+/* Right side of the navbar (login/signup buttons) */
 .right.menu{
     display: flex;
     align-items: center;
@@ -133,6 +135,7 @@ blockquote::before {
     flex-shrink: 0;
 }
 
+/* Styling for input inside navbar */
 .right.menu .ui.input {
     flex-grow: 1;
     max-width: 260px;
@@ -206,8 +209,6 @@ blockquote {
     color: #8a6353;
 }
 
-
-
 /* banner image styling right under the nav bar*/
 .banner-image {
     width: 100%;
@@ -270,7 +271,7 @@ footer .four.wide.column{
 }
 
 
-/* responsive media query for mobile view */
+/* responsive design media query for mobile view */
 @media (max-width: 500px) {
     .four wide column sidebar{
         width: 100% !important;
@@ -361,10 +362,10 @@ footer .four.wide.column{
 
 
 
-        .sidebar {
-            min-height: auto !important;
-            height: auto !important;
-        }
+    .sidebar {
+        min-height: auto !important;
+        height: auto !important;
+    }
 
 
     .footer {
@@ -399,7 +400,7 @@ footer .four.wide.column{
 
 
 
-/* for tablets*/
+/* Responsive Design for tablets */
 @media (max-width:900px) and (min-width:501px) {
 
     .ui.menu {
@@ -586,6 +587,7 @@ footer .four.wide.column{
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Book card text color */
 .book-card {
     color: #3a2e1f;
     text-decoration: none;
@@ -594,6 +596,8 @@ footer .four.wide.column{
     color: #5a3e36;
     text-decoration: none;
 }
+
+/* Book card text styling */
 .book-card p {
     color: #3a2e1f;
     font-weight: bold;
@@ -606,6 +610,7 @@ footer .four.wide.column{
     margin-top: 20px !important;
 }
 
+/* Sidebar header styling */
 .sidebar h3.ui.header {
     color: #3a2e1f;
     font-size: 1.2rem;
@@ -615,6 +620,7 @@ footer .four.wide.column{
     margin-bottom: 10px;
 }
 
+/* Sidebar text */
 .sidebar p,
 .sidebar ul,
 .sidebar blockquote {
@@ -626,5 +632,4 @@ footer .four.wide.column{
 .sidebar ul li {
     margin-bottom: 8px;
 }
-
 

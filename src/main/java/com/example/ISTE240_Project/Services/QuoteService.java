@@ -10,15 +10,22 @@ import java.util.Random;
 @Service
 public class QuoteService {
 
+    //repository to interact with the quote table
     private final QuoteRepository repo;
 
+    // constructor to inject the QuoteRepository
     public QuoteService(QuoteRepository repo) {
         this.repo = repo;
     }
 
+    // get a random quote from the database
     public Quote getRandomQuote() {
         List<Quote> quotes = repo.findAll();
+
+        // if no quotes found, return a default quote
         if (quotes.isEmpty()) return new Quote("Read more, worry less.", "Unknown");
+
+        // otherwise, it return a random quote
         return quotes.get(new Random().nextInt(quotes.size()));
     }
 }
