@@ -18,9 +18,8 @@ public class AuthorService {
                 this.authorRepository = authorRepository;
         }
 
-        //retrieves a list of all authors from the database
         public List<Author> getAllAuthors() {
-                return authorRepository.findAll();
+                return authorRepository.findAll(); //retrieves a list of all authors from the database
         }
 
         //retrieves an author by their name, ignoring case sensitivity
