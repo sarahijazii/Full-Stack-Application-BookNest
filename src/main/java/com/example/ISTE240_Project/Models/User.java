@@ -23,27 +23,19 @@ public class User {
     @Column(name="Bio", length = 120, nullable = false)
     private String bio;
 
-    @Lob
-    @Column(columnDefinition = "LONGBLOB")
+    @Lob /* Tells JPA that image will store large binary data */ 
+    @Column(columnDefinition = "LONGBLOB") /* Makes the database create a column with the type Longblob, which holds large binary data */ 
     private byte[] image;
 
     /* GETTERS */
 
-    public String getDisplayName() {
-        return displayName;
-    }
+    public String getDisplayName() {return displayName; }
 
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() { return username;}
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() {   return email; }
 
-    public String getPassword() {
-        return password;
-    }
+    public String getPassword() {    return password; }
 
     public String getBio(){return bio;}
 
@@ -52,17 +44,11 @@ public class User {
     /* SETTERS */
     public void setDisplayName(String displayName) {this.displayName = displayName;}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public void setUsername(String username) {this.username = username;}
+  
+    public void setEmail(String email) {  this.email = email;   }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    public void setPassword(String password) {    this.password = password;  }
 
     public void setBio(String bio){this.bio=bio;}
 
