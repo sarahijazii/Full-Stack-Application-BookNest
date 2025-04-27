@@ -23,11 +23,11 @@
             margin: 0;
             background-color: #c7b8ab;
             color: white;
-            padding: 30px 20px;
+            padding: 5px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             position: fixed;
             height: 100vh;
             top: 0;
@@ -36,63 +36,36 @@
 
         .ui.sidebar.visible .ui.image.logo {
             width: 100%;
-            margin-bottom: 30px;
+
         }
 
-        /*styling the links in the nav bar that will lead us to the other webpages (home/discover/etc..)*/
-        .ui.sidebar.visible a.item {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            padding: 10px;
-            width: 100%;
-            text-align: center;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        .ui.sidebar.visible a.item:hover {
-            background-color: #5a3e36;
-            padding-left: 15px;
-            transform: translateX(5px); /* moving the link 5px to the right when the user hovers over the nav links */
-        }
 
-        /*------------------ LOGIN/SIGNUP BUTTONS CSS DESIGN ------------------*/
+        /*------------------ BACK TO LOGIN PAGE BUTTON CSS DESIGN ------------------*/
         .btn-container {
             display: flex;
-            width: 100%;
-            margin-top: 20px;
+            width: 75%;
+
         }
 
-        .btn-container button.ui.button.primary.login-btn,
-        .btn-container button.ui.button.secondary.signup-btn {
-            width: 50%;
+        .btn-container button.ui.button.primary.login-btn{
+            width: 100%;
             padding: 10px;
             font-size: 16px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
-        }
-
-        .btn-container button.ui.button.primary.login-btn {
-            background-color: #d3d3d3;
-            color: #333;
-        }
-
-        .btn-container button.ui.button.secondary.signup-btn {
             background-color: #5a3e36;
+            color: white;
+        }
+        .btn-container button.ui.button.primary.login-btn a{
             color: white;
         }
 
         .btn-container button.ui.button.primary.login-btn:hover {
-            background-color: darkgray;
-        }
-
-        .btn-container button.ui.button.secondary.signup-btn:hover {
             background-color: #7f5737;
         }
+
 
         .content-wrapper {
             margin-left: 20%;
@@ -106,10 +79,6 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .faq-page .faq-container {
-            margin-top: 20px;
-            line-height: 2;
-        }
 
         .faq-page .faq-item {
             margin-bottom: 25px;
@@ -208,16 +177,11 @@
 <!-- SIDEBAR -->
 <div class="ui sidebar visible">
     <img src="/images/logo.png" alt="Logo" class="ui centered image logo">
-    <a href="home" class="item">Home</a>
-    <a href="#discover" class="item">Discover</a>
-    <a href="/nobel" class="item">Nobel Prize</a>
-    <a href="#profile" class="item">Profile</a>
-    <a href="/faqs.html" class="item">FAQs</a>
+
 
     <!--LOGIN/SIGN-UP BUTTONS-->
     <div class="btn-container">
-        <button class="ui button primary login-btn" style="font-family: 'Arial', sans-serif">Login</button>
-        <button class="ui button secondary signup-btn" style="font-family: 'Arial', sans-serif">Signup</button>
+        <button class="ui button primary login-btn" style="font-family: 'Arial', sans-serif"> <a href="/joinbooknest"> Back to Login </a></button>
     </div>
 </div>
 
@@ -256,7 +220,7 @@
     <footer class="ui inverted vertical segment footer">
         <div class="ui container">
             <div class="ui stackable divided equal height stackable grid">
-                <div class="four wide column">
+                <div class="eight wide column">
                     <h4 class="ui inverted">Connect With Us</h4>
                     <div class="ui inverted link list">
                         <a href="#" class="item"><i class="facebook icon"></i> Facebook</a>
@@ -264,35 +228,19 @@
                         <a href="#" class="item"><i class="instagram icon"></i> Instagram</a>
                     </div>
                 </div>
-                <div class="four wide column">
+                <div class="eight wide column">
                     <h4 class="ui inverted">Contact Us</h4>
                     <p>Email: booknest@gmail.com</p>
                     <p>Phone: +123 456 7890</p>
                 </div>
-                <div class="eight wide column">
-                    <h4 class="ui inverted">Newsletter</h4>
-                    <p>Subscribe for updates on new book releases.</p>
-                    <form action="/subscribe" method="post" class="ui action input" style="width: 100%;">
-                        <input type="email" name="email" placeholder="Your email..." required style="background: #f4f1ea; color: #5a3e36; border: 1px solid #8a6353; border-radius: 5px; padding: 10px;">
-                        <button class="ui button" type="submit" style="background-color: #d3d3d3; color: #333;">Subscribe</button>
-                    </form>
-                </div>
+
             </div>
             <div class="ui center aligned container">
                 <p>© 2025 BookNest. All rights reserved.</p>
             </div>
         </div>
 
-        <!-- Newsletter Feedback Modal -->
-        <div class="ui modal" id="subscription-modal">
-            <div class="header" id="modal-header">Subscription</div>
-            <div class="content">
-                <p id="modal-message">Thanks for subscribing!</p>
-            </div>
-            <div class="actions">
-                <div class="ui approve button">OK</div>
-            </div>
-        </div>
+
 
     </footer>
 </div>
@@ -302,20 +250,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
-<script>
-    $(document).ready(function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('subscribed') === 'true') {
-            $('#modal-header').text("You're Subscribed!");
-            $('#modal-message').text("Thanks for subscribing to BookNest 🎉");
-            $('#subscription-modal').modal('show');
-        } else if (urlParams.get('subscribeFailed') === 'true') {
-            $('#modal-header').text("Already Subscribed");
-            $('#modal-message').text("You're already on our list 😊 No need to subscribe again.");
-            $('#subscription-modal').modal('show');
-        }
-    });
-</script>
+
 
 
 </body>

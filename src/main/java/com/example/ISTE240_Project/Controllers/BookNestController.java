@@ -54,12 +54,17 @@ public class BookNestController {
     private final NewsletterService newsletterService;
 
 
-    public BookNestController(BookService bookService, QuoteService quoteService, FunFactService funFactService, NobelService nobelService, NewsletterService newsletterService) {
+    public BookNestController(BookService bookService, QuoteService quoteService, FunFactService funFactService, NobelService nobelService, NewsletterService newsletterService, AlreadyReadService alreadyReadService, CurrentlyReadingService currentlyReadingService, WantToReadService wantToReadService, UserService userService, AuthorService authorService) {
         this.bookService = bookService;
         this.quoteService = quoteService;
         this.funFactService = funFactService;
         this.nobelService=nobelService;
         this.newsletterService=newsletterService;
+        this.alreadyReadService = alreadyReadService;
+        this.currentlyReadingService=currentlyReadingService;
+        this.wantToReadService=wantToReadService;
+        this.userService=userService;
+        this.authorService=authorService;
     }
 
     @GetMapping("/joinbooknest")

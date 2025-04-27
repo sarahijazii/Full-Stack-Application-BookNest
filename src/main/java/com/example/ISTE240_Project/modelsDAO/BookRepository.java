@@ -13,7 +13,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 
     List<Book> findAll();
 
-    Optional<Book> findById(Long id);
+    Optional<Book> findById(int id);
 
     List<Book> findByPublicationDateBetween(LocalDate start, LocalDate end);
 
