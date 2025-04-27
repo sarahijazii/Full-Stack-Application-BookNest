@@ -4,56 +4,117 @@
     <meta charset="UTF-8">
     <title>{{book.title}} - Book Details</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #fdf6e3;
-            color: #333;
+            background-color: #e5decc;
+            color: #3e2723;
             padding: 50px;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
+
         .book-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background-color: #fff8ec;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            animation: fadeIn 0.7s ease;
         }
+
+        /*defining animation steps */
+        @keyframes fadeIn {
+            from {opacity: 0;} /*starting with it being invisible*/
+            to {opacity: 1;} /*fully visible*/
+        }
+
         .book-cover {
-            width: 200px;
-            border-radius: 8px;
+            width: 250px;
+            border-radius: 12px;
+            margin-right: 40px;
+            transition: transform 0.3s;
         }
+
+        .book-cover:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
         .genre-badge {
+            display: inline-block;
             background-color: #d1bfa7;
             color: #3a2e1f;
-            padding: 5px 10px;
-            border-radius: 20px;
+            padding: 7px 15px;
+            border-radius: 30px;
             font-weight: bold;
-            font-size: 0.9em;
+            margin-bottom: 20px;
+            font-size: 0.95em;
         }
+
+        .info-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .details p {
+            margin: 8px 0;
+            font-size: 1.1em;
+        }
+
         .back-button {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
+        }
+
+        .back-button a {
+            background-color: #d1bfa7;
+            color: #3e2723;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #c8ae9e;
         }
     </style>
 </head>
 <body>
 
-<div class="book-container ui grid">
-    <div class="five wide column">
-        <img class="book-cover" src="{{book.thumbnailUrl}}" alt="Book Cover">
-    </div>
-    <div class="eleven wide column">
+<div class="book-container">
+    <img class="book-cover" src="{{book.thumbnailUrl}}" alt="Book Cover">
+
+    <div class="info-section">
         <h1>{{book.title}}</h1>
         <h3>by {{book.author}}</h3>
-        <p><span class="genre-badge">{{book.genre}}</span></p>
-        <p><strong>Pages:</strong> {{book.pageCount}}</p>
-        <p><strong>ISBN:</strong> {{book.isbn}}</p>
-        <p><strong>Published on:</strong> {{book.publicationDate}}</p>
+
+        <div class="genre-badge">{{book.genre}}</div>
+
+        <div class="details">
+            <p><strong>Pages:</strong> {{book.pageCount}}</p>
+            <p><strong>ISBN:</strong> {{book.isbn}}</p>
+            <p><strong>Published on:</strong> {{book.publicationDate}}</p>
+        </div>
+
         <p style="margin-top: 20px;">{{book.description}}</p>
 
         <div class="back-button">
-            <a href="/home" class="ui button" style="background-color: #d1bfa7; color: #3a2e1f;">← Back to Home</a>
+            <a href="/home">← Back to Home</a>
         </div>
     </div>
 </div>
