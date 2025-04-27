@@ -53,14 +53,14 @@ public class AlreadyReadService {
     }
 
     public List<AlreadyRead> getAllBooksSortedByRating(String email) {
-        List<AlreadyRead> topbooks = alreadyReadRepository.findAllByEmailOrderByRatingDesc(email);
+        List<AlreadyRead> topbooks = alreadyReadRepository.findAllByEmailOrderByRatingDesc(email); /* Ranks a user's books from highest to lowest rating  */
         List<AlreadyRead> favoritebooks = new ArrayList<>();
         for (int a =0; a<5; a++){
             if (a<topbooks.size()){
-                favoritebooks.add(topbooks.get(a));
+                favoritebooks.add(topbooks.get(a)); /* Adds the user's top five books in a new list */
             }
         }
-        return favoritebooks;
+        return favoritebooks; /* Returns the new list */
     }
 
     public double getUserAverageRating(String email) {
@@ -71,11 +71,11 @@ public class AlreadyReadService {
             sum = sum + book.getRating();
             books++;
         }
-        double result = sum/books;
+        double result = sum/books; /* Calculates the average rating */
 
-        // Use math round to format the average rating nicely, it functions by rounding to the nearest
-        // whole number. So it multiples by hundred, rounds, then divides by a hundred again to get the
-        // correct nicely formatted decimal placement
+        /* Use math round to format the average rating nicely, it functions by rounding to the nearest
+        whole number. So it multiples by hundred, rounds, then divides by a hundred again to get the
+        correct nicely formatted decimal placement */
 
         return Math.round(result * 100.0) / 100.0;
 
@@ -89,8 +89,8 @@ public class AlreadyReadService {
             sum = sum + book.getPageCount();
         }
         for (CurrentlyReading book : currentlyReading) {
-            sum = sum + book.getPagesRead();
-        }
+            sum = sum + book.getPagesRead(); 
+        } /* Sums up the total page counts of the books already read as well as the pages read from the currently reading books */
 
         return sum;
     }
@@ -99,6 +99,8 @@ public class AlreadyReadService {
         return alreadyReadRepository.findByEmailAndGenreIgnoreCase(email,genre);
     }
 
+    /* Gets the count of how many times a genre is read and performs a comparison to determine which is the greatest count.
+    The genre read the most is returned as the user's favorite genre */
     public String getUserFavouriteGenre(String email) {
         int romancecount = getByGenre(email,"romance").size();
         int scificount = getByGenre(email,"sci-fi").size();
