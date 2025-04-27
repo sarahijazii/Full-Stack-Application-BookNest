@@ -18,8 +18,7 @@ public class NobelService {
         this.nobelRepository = nobelRepository;
     }
 
-    //retrieving all Nobel Prize winners from the repository
     public List<NobelPrize> getAllWinners() {
-        return nobelRepository.findAll();
+        return nobelRepository.findAll(); //retrieving all Nobel Prize winners from the repository
     }
 }
