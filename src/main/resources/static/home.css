@@ -359,10 +359,10 @@ footer .four.wide.column{
 
 
 
-        .sidebar {
-            min-height: auto !important;
-            height: auto !important;
-        }
+    .sidebar {
+        min-height: auto !important;
+        height: auto !important;
+    }
 
 
     .footer {
@@ -629,5 +629,4 @@ footer .four.wide.column{
 .sidebar ul li {
     margin-bottom: 8px;
 }
-
 
