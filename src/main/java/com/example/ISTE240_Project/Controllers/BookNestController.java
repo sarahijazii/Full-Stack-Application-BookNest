@@ -194,13 +194,10 @@ public class BookNestController {
         return "profile";
     }
 
-    //MAPPING FOR THE NOBEL PRIZE PAGE
-    @GetMapping("/nobel/{email}")
+    @GetMapping("/nobel/{email}") //MAPPING FOR THE NOBEL PRIZE PAGE
     public String getNobelPage(@PathVariable String email, Model model) {
 
         model.addAttribute("email",email);
-
-        // ADDING FUN FACTS DATA
         List<NobelFunFact> funFacts = Arrays.asList(
                 new NobelFunFact("Youngest Literature Winner", "Rudyard Kipling (42 years old, 1907)"),
                 new NobelFunFact("Most Nominated Author", "Graham Greene (20+ nominations, but never won)"),
@@ -210,7 +207,6 @@ public class BookNestController {
         );
         model.addAttribute("funFacts", funFacts);
 
-        //ADDING NOTABLE SPEECHES DATA
         List<NotableSpeech> speeches = Arrays.asList(
                 new NotableSpeech("William Faulkner", 1950, "https://www.nobelprize.org/prizes/literature/1949/faulkner/speech/"),
                 new NotableSpeech("Toni Morrison", 1993, "https://www.nobelprize.org/prizes/literature/1993/morrison/speech/"),
@@ -232,7 +228,7 @@ public class BookNestController {
         Author author = authorService.getAuthorByName(name);
         model.addAttribute("author", author);
         model.addAttribute("email",email);
-        return "authors"; // This should map to author.mustache
+        return "authors";
     }
 
 
@@ -263,8 +259,5 @@ public class BookNestController {
         return "redirect:/Discover/" +email;
 
     }
-
-
-
 
 }
