@@ -6,7 +6,7 @@ BookNest offers users a seamless platform to:
 
 - Explore a dedicated section for Nobel Prize-winning authors, with details like notable speeches and fun literary facts
 
-- Create custom reading lists, add reviews, and track their reading journey
+- Add books to various reading lists, add reviews and ratings, and track their reading journey
 
 - Subscribe to a weekly newsletter with updates on new titles and featured content
 
